@@ -1,2 +1,0 @@
-# xosolutions
-xosolution website

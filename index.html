@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XO Solutions</title>
+    <title>XO Solutions - Enterprise IT Services</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -31,127 +31,345 @@
                     <text x="250" y="365" font-family="Inter, sans-serif" font-weight="700" font-size="70" text-anchor="middle" dominant-baseline="middle" fill="currentColor">SOLUTIONS</text>
                 </svg>
             </a>
+            
+            <!-- Quick Access -->
+            <div class="quick-access">
+                <a href="services/core/xo-command.html" class="quick-link">XO Command</a>
+                <a href="services/core/xo-shield.html" class="quick-link">XO Shield</a>
+            </div>
+            
             <button class="nav-toggle">MENU</button>
         </div>
+        
+        <!-- Mega Menu -->
         <div class="nav-menu">
             <button class="nav-close">CLOSE</button>
-            <a href="#services">SERVICES</a>
-            <a href="#about">ABOUT</a>
-            <a href="#contact">CONTACT</a>
+            
+            <div class="mega-menu">
+                <div class="menu-section">
+                    <h3>Core Services</h3>
+                    <a href="services/core/xo-command.html">XO Command</a>
+                    <a href="services/core/xo-shield.html">XO Shield</a>
+                    <a href="services/core/xo-workspace.html">XO Workspace</a>
+                    <a href="services/core/xo-voice.html">XO Voice</a>
+                </div>
+                
+                <div class="menu-section">
+                    <h3>Infrastructure</h3>
+                    <a href="services/infrastructure/xo-vault.html">XO Vault</a>
+                    <a href="services/infrastructure/xo-build.html">XO Build</a>
+                    <a href="services/infrastructure/xo-connect.html">XO Connect</a>
+                    <a href="services/infrastructure/xo-fortress.html">XO Fortress</a>
+                </div>
+                
+                <div class="menu-section">
+                    <h3>Specialized</h3>
+                    <a href="services/specialized/xo-finance.html">XO Finance</a>
+                    <a href="services/specialized/xo-hospitality.html">XO Hospitality</a>
+                    <a href="services/specialized/xo-guest.html">XO Guest</a>
+                </div>
+                
+                <div class="menu-section">
+                    <h3>Company</h3>
+                    <a href="about.html">About</a>
+                    <a href="services.html">All Services</a>
+                    <a href="sectors.html">Sectors</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
         </div>
     </nav>
+
+    <!-- Search Bar -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search services, solutions..." />
+            <button class="search-close" id="searchClose">×</button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-main">
-            <h1 class="hero-title">
+            <h1 class="hero-title animate-on-scroll">
                 XO<br>
                 SOLUTIONS
             </h1>
-            <p class="hero-subtitle">
-                We manage servers and provide IT support for businesses that refuse to settle for ordinary.
+            <p class="hero-subtitle animate-on-scroll">
+                Enterprise IT services that transform how businesses operate. From cybersecurity to cloud infrastructure, we deliver solutions that scale.
             </p>
-            <button class="hero-cta">START PROJECT</button>
+            <div class="hero-cta-group animate-on-scroll">
+                <button class="hero-cta" id="openConfigurator">CONFIGURE SERVICES</button>
+                <button class="search-trigger" id="searchTrigger">SEARCH SERVICES</button>
+            </div>
+            
+            <!-- Service Stats -->
+            <div class="hero-stats animate-on-scroll">
+                <div class="stat">
+                    <span class="stat-number" data-target="11">0</span>
+                    <span class="stat-label">XO Services</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="99.9">0</span>
+                    <span class="stat-label">% Uptime SLA</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="24">0</span>
+                    <span class="stat-label">Hour Support</span>
+                </div>
+            </div>
         </div>
         
         <div class="hero-sidebar">
             <div>
+                <h3>Popular Services</h3>
                 <ul class="hero-services">
-                    <li>Server Management</li>
-                    <li>IT Support</li>
-                    <li>Consultation</li>
+                    <li><a href="services/core/xo-command.html">XO Command - IT Operations</a></li>
+                    <li><a href="services/core/xo-shield.html">XO Shield - Cybersecurity</a></li>
+                    <li><a href="services/core/xo-workspace.html">XO Workspace - Digital Workplace</a></li>
+                    <li><a href="services/infrastructure/xo-vault.html">XO Vault - Data Backup</a></li>
                 </ul>
             </div>
             <div class="hero-contact">
+                <span>Enterprise Inquiries</span>
                 hello@xosolutions.com
             </div>
         </div>
         
         <div class="hero-bottom">
             <div class="hero-status">
-                NEW COMPANY / ACCEPTING CLIENTS
+                <span class="status-indicator"></span>
+                ALL SYSTEMS OPERATIONAL / ACCEPTING NEW CLIENTS
             </div>
             <div class="hero-scroll">
-                SCROLL TO EXPLORE
+                EXPLORE OUR SERVICES
+                <div class="scroll-arrow">↓</div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="services-container">
-            <div class="services-header">
-                <h2 class="services-title">
-                    WHAT<br>
-                    WE DO
+    <!-- Service Categories Overview -->
+    <section class="service-categories" id="services">
+        <div class="categories-container">
+            <div class="categories-header animate-on-scroll">
+                <h2 class="categories-title">
+                    ENTERPRISE<br>
+                    IT SERVICES
                 </h2>
-                <p class="services-description">
-                    Essential IT services designed for businesses that demand excellence and reliability in their technology infrastructure.
+                <p class="categories-description">
+                    Comprehensive technology solutions designed for businesses that demand excellence, security, and scalability.
                 </p>
             </div>
             
-            <div class="services-grid">
-                <div class="service-item">
-                    <div class="service-number">01</div>
-                    <h3 class="service-title">Server Management</h3>
-                    <p class="service-description">
-                        Reliable server hosting with ongoing management, monitoring, and maintenance to ensure optimal performance.
-                    </p>
-                    <a href="server-management.html" class="service-link">Learn More</a>
+            <div class="categories-grid">
+                <div class="category-card animate-on-scroll" data-category="core">
+                    <div class="category-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect x="8" y="8" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <line x1="16" y1="24" x2="32" y2="24" stroke="currentColor" stroke-width="2"/>
+                            <line x1="24" y1="16" x2="24" y2="32" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Core Services</h3>
+                    <p>Essential IT operations, security, and workplace solutions every business needs.</p>
+                    <ul class="category-services">
+                        <li>XO Command - IT Operations</li>
+                        <li>XO Shield - Cybersecurity</li>
+                        <li>XO Workspace - Digital Workplace</li>
+                        <li>XO Voice - Communications</li>
+                    </ul>
+                    <a href="services.html#core" class="category-link">Explore Core →</a>
                 </div>
                 
-                <div class="service-item">
-                    <div class="service-number">02</div>
-                    <h3 class="service-title">IT Support</h3>
-                    <p class="service-description">
-                        Comprehensive technical support for your team including troubleshooting and user assistance.
-                    </p>
-                    <a href="it-support.html" class="service-link">Learn More</a>
+                <div class="category-card animate-on-scroll" data-category="infrastructure">
+                    <div class="category-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="12" width="36" height="24" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <rect x="18" y="18" width="12" height="4" fill="currentColor"/>
+                            <rect x="18" y="26" width="12" height="4" fill="currentColor"/>
+                            <circle cx="12" cy="20" r="2" fill="currentColor"/>
+                            <circle cx="36" cy="20" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Infrastructure</h3>
+                    <p>Robust cloud, networking, and infrastructure solutions that scale with your growth.</p>
+                    <ul class="category-services">
+                        <li>XO Vault - Data Backup & Recovery</li>
+                        <li>XO Build - Cloud Infrastructure</li>
+                        <li>XO Connect - Network Solutions</li>
+                        <li>XO Fortress - Disaster Recovery</li>
+                    </ul>
+                    <a href="services.html#infrastructure" class="category-link">Explore Infrastructure →</a>
                 </div>
                 
-                <div class="service-item">
-                    <div class="service-number">03</div>
-                    <h3 class="service-title">Getting Started</h3>
-                    <p class="service-description">
-                        We're launching to provide professional IT services. Contact us to discuss your specific needs.
-                    </p>
+                <div class="category-card animate-on-scroll" data-category="specialized">
+                    <div class="category-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 4L32 12H40V36H8V12H16L24 4Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="24" cy="20" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M16 28H32" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Specialized</h3>
+                    <p>Industry-specific solutions tailored for finance, hospitality, and guest services.</p>
+                    <ul class="category-services">
+                        <li>XO Finance - Financial Services IT</li>
+                        <li>XO Hospitality - Hotel Technology</li>
+                        <li>XO Guest - Visitor Management</li>
+                    </ul>
+                    <a href="services.html#specialized" class="category-link">Explore Specialized →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-content">
-                <h2>ABOUT XO SOLUTIONS</h2>
-                <p>
-                    XO Solutions is a new IT services company focused on providing reliable server management and comprehensive IT support.
-                </p>
-                <p>
-                    We believe every business deserves professional IT services that are both reliable and affordable. Our mission is to be your trusted technology partner.
-                </p>
-                <p>
-                    Whether you need server hosting or ongoing IT support, we're here to help your business succeed.
-                </p>
+    <!-- Interactive Timeline -->
+    <section class="timeline-section">
+        <div class="timeline-container">
+            <h2 class="timeline-title animate-on-scroll">Your XO Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll" data-step="1">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>Discovery & Assessment</h3>
+                        <p>We analyze your current IT infrastructure and business needs</p>
+                        <span class="timeline-duration">Week 1</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll" data-step="2">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>Solution Design</h3>
+                        <p>Custom XO service configuration tailored to your requirements</p>
+                        <span class="timeline-duration">Week 2</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll" data-step="3">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>Implementation</h3>
+                        <p>Seamless deployment with minimal business disruption</p>
+                        <span class="timeline-duration">Weeks 3-4</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll" data-step="4">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h3>Ongoing Support</h3>
+                        <p>24/7 monitoring, maintenance, and continuous improvement</p>
+                        <span class="timeline-duration">Ongoing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Configurator Widget -->
+    <section class="configurator-preview">
+        <div class="configurator-container">
+            <div class="configurator-header animate-on-scroll">
+                <h2>Build Your XO Package</h2>
+                <p>Select the services your business needs and get a custom recommendation</p>
             </div>
             
-            <div class="about-stats">
+            <div class="configurator-widget">
+                <div class="widget-step active" data-step="1">
+                    <h3>What's your business size?</h3>
+                    <div class="size-options">
+                        <button class="size-option" data-size="small">1-25 employees</button>
+                        <button class="size-option" data-size="medium">26-100 employees</button>
+                        <button class="size-option" data-size="large">100+ employees</button>
+                    </div>
+                </div>
+                
+                <div class="widget-step" data-step="2">
+                    <h3>Select your primary needs:</h3>
+                    <div class="needs-grid">
+                        <label class="need-option">
+                            <input type="checkbox" value="security">
+                            <span>Enhanced Security</span>
+                        </label>
+                        <label class="need-option">
+                            <input type="checkbox" value="backup">
+                            <span>Data Protection</span>
+                        </label>
+                        <label class="need-option">
+                            <input type="checkbox" value="support">
+                            <span>24/7 IT Support</span>
+                        </label>
+                        <label class="need-option">
+                            <input type="checkbox" value="cloud">
+                            <span>Cloud Infrastructure</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="widget-step" data-step="3">
+                    <h3>Recommended XO Services:</h3>
+                    <div class="recommendations" id="recommendations">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="widget-controls">
+                    <button class="widget-btn secondary" id="prevStep" style="display: none;">Previous</button>
+                    <button class="widget-btn primary" id="nextStep">Next</button>
+                    <button class="widget-btn primary" id="getQuote" style="display: none;">Get Custom Quote</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="about-preview" id="about">
+        <div class="about-container">
+            <div class="about-content animate-on-scroll">
+                <h2>ENTERPRISE IT EXCELLENCE</h2>
+                <p>
+                    XO Solutions delivers enterprise-grade IT services with the agility of a modern technology partner. Our XO service portfolio covers everything from core IT operations to specialized industry solutions.
+                </p>
+                <p>
+                    We believe technology should empower your business, not complicate it. That's why every XO service is designed for reliability, security, and seamless integration with your existing operations.
+                </p>
+                
+                <div class="about-features">
+                    <div class="feature">
+                        <h4>99.9% Uptime SLA</h4>
+                        <p>Enterprise-grade reliability across all XO services</p>
+                    </div>
+                    <div class="feature">
+                        <h4>24/7 Expert Support</h4>
+                        <p>Round-the-clock monitoring and technical assistance</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Scalable Solutions</h4>
+                        <p>Grow your XO services as your business expands</p>
+                    </div>
+                </div>
+                
+                <a href="about.html" class="about-link">Learn More About XO →</a>
+            </div>
+            
+            <div class="about-stats animate-on-scroll">
                 <div class="stat-item">
-                    <span class="stat-number">02</span>
-                    <span class="stat-label">Core Services</span>
+                    <span class="stat-number">11</span>
+                    <span class="stat-label">XO Services</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Commitment</span>
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Service Categories</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">NEW</span>
-                    <span class="stat-label">Fresh Start</span>
+                    <span class="stat-label">Company Status</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">READY</span>
-                    <span class="stat-label">To Help</span>
+                    <span class="stat-label">For Enterprise</span>
                 </div>
             </div>
         </div>
@@ -160,26 +378,26 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-container">
-            <div class="contact-info">
-                <h2>LET'S WORK TOGETHER</h2>
+            <div class="contact-info animate-on-scroll">
+                <h2>START YOUR XO TRANSFORMATION</h2>
                 <p>
-                    Ready to discuss your IT needs? We're excited to learn about your business and help you succeed.
+                    Ready to modernize your IT infrastructure? Let's discuss how XO services can transform your business operations.
                 </p>
                 
                 <div class="contact-details">
-                    <h3>Email</h3>
+                    <h3>Enterprise Sales</h3>
                     <p>hello@xosolutions.com</p>
                     
                     <h3>Response Time</h3>
-                    <p>We typically respond within 24 hours</p>
+                    <p>We respond to enterprise inquiries within 4 hours</p>
                     
-                    <h3>Consultation</h3>
-                    <p>Free initial consultation available</p>
+                    <h3>Free Consultation</h3>
+                    <p>Comprehensive IT assessment and XO service recommendations</p>
                 </div>
             </div>
             
-            <form class="contact-form">
-                <h3>Send Message</h3>
+            <form class="contact-form animate-on-scroll">
+                <h3>Get Your XO Assessment</h3>
                 
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -193,24 +411,109 @@
                 
                 <div class="form-group">
                     <label for="company">Company</label>
-                    <input type="text" id="company" name="company">
+                    <input type="text" id="company" name="company" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Tell us about your IT needs..."></textarea>
+                    <label for="employees">Company Size</label>
+                    <select id="employees" name="employees" required>
+                        <option value="">Select size</option>
+                        <option value="1-25">1-25 employees</option>
+                        <option value="26-100">26-100 employees</option>
+                        <option value="100+">100+ employees</option>
+                    </select>
                 </div>
                 
-                <button type="submit" class="submit-btn">Send Message</button>
+                <div class="form-group">
+                    <label for="services">Interested XO Services</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" value="xo-command"> XO Command</label>
+                        <label><input type="checkbox" value="xo-shield"> XO Shield</label>
+                        <label><input type="checkbox" value="xo-workspace"> XO Workspace</label>
+                        <label><input type="checkbox" value="xo-vault"> XO Vault</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Tell us about your IT challenges</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Describe your current IT setup and main challenges..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Request XO Assessment</button>
             </form>
         </div>
     </section>
 
+    <!-- Live Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-toggle" id="chatToggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h4>XO Solutions Support</h4>
+                <button class="chat-minimize" id="chatMinimize">−</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    <p>Hello! I'm here to help you learn about our XO services. What would you like to know?</p>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Ask about XO services...">
+                <button id="chatSend">Send</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 XO Solutions. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>XO Services</h4>
+                <ul>
+                    <li><a href="services/core/xo-command.html">XO Command</a></li>
+                    <li><a href="services/core/xo-shield.html">XO Shield</a></li>
+                    <li><a href="services/core/xo-workspace.html">XO Workspace</a></li>
+                    <li><a href="services/infrastructure/xo-vault.html">XO Vault</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About XO Solutions</a></li>
+                    <li><a href="services.html">All Services</a></li>
+                    <li><a href="sectors.html">Industry Sectors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="mailto:hello@xosolutions.com">Enterprise Sales</a></li>
+                    <li><a href="mailto:support@xosolutions.com">Technical Support</a></li>
+                    <li>24/7 Service Desk</li>
+                    <li>Emergency Hotline</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <p>Enterprise IT services that scale with your ambition.</p>
+                <p class="footer-email">hello@xosolutions.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 XO Solutions. All rights reserved. | Enterprise IT Services</p>
+        </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="script.js"></script>
+    <script src="js/configurator.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>
