@@ -1,327 +1,840 @@
-<!DOCTYPE html>
+/* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .scroll-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .scroll-dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .scroll-dot:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* Section Navigation */
+        .section-nav {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .section-nav:hover {
+            opacity: 1;
+        }
+
+        .nav-arrow {
+            background: none;
+            border: 2px solid var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .nav-arrow:hover {
+            background: var(--primary);
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .section-nav-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+        }<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XO Solutions - Specialized Managed IT Services for London</title>
     <meta name="description" content="XO Solutions delivers specialized managed IT services for London's financial services and hospitality sectors. 24/7 monitoring, expert support, and transparent pricing.">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --accent: #ff0040;
+            --gray: #888888;
+            --light-gray: #f5f5f5;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--secondary);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* Enable scroll snapping */
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        /* Full viewport sections */
+        .section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Top Navigation - Simple and Clean */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 900; /* Lower than sidebar menu */
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .top-nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo-box {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .logo-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .menu-btn {
+            font-family: 'Space Mono', monospace;
+            background: none;
+            border: 2px solid var(--primary);
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .menu-btn:hover {
+            background: var(--primary);
+            color: var(--secondary);
+        }
+
+        /* Black Sidebar Menu */
+        .sidebar-menu {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--primary);
+            color: var(--secondary);
+            z-index: 1500; /* Higher than everything */
+            transition: right 0.4s ease;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .sidebar-menu.open {
+            right: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--accent);
+        }
+
+        .menu-section {
+            margin-bottom: 3rem;
+        }
+
+        .menu-section h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-item {
+            display: block;
+            color: var(--secondary);
+            text-decoration: none;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .menu-item:hover {
+            color: var(--accent);
+            padding-left: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem 4rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            position: relative;
+            scroll-snap-align: start;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-main h1 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            font-family: 'Space Mono', monospace;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--secondary);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--secondary);
+        }
+
+        /* Hero Features */
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            text-align: left;
+            padding: 2rem;
+            background: var(--secondary);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .feature-item h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        /* Services Preview */
+        .services-preview {
+            min-height: 100vh;
+            background: var(--secondary);
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .services-header h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            font-family: 'Space Mono', monospace;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .service-link:hover {
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about-preview {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 6rem 0;
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .about-highlight {
+            text-align: left;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .about-highlight:hover {
+            border-color: var(--accent);
+            background: rgba(255, 0, 64, 0.1);
+        }
+
+        .about-highlight h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-highlight p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            min-height: 100vh;
+            background: var(--light-gray);
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+        }
+
+        /* Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        .chat-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .chat-btn:hover {
+            transform: scale(1.1);
+            background: var(--primary);
+        }
+
+        /* Overlay for menu */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1400;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Disable scroll snap on mobile for better touch scrolling */
+            body {
+                scroll-snap-type: none;
+            }
+            
+            .section {
+                scroll-snap-align: none;
+                min-height: auto;
+                padding: 4rem 0;
+            }
+            
+            .hero {
+                min-height: 100vh;
+                scroll-snap-align: start;
+            }
+            
+            .top-nav {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hero {
+                padding: 6rem 1.5rem 2rem;
+            }
+            
+            .hero-features {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar-menu {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .services-container,
+            .about-container,
+            .contact-container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-progress"></div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-content">
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="top-nav-content">
             <a href="#" class="logo">
-                <svg width="56" height="56" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
-                    <defs>
-                        <style>
-                            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Space+Mono:wght@700&display=swap');
-                        </style>
-                    </defs>
-                    <rect x="20" y="20" width="460" height="460" fill="none" stroke="currentColor" stroke-width="20"/>
-                    <line x1="30" y1="250" x2="470" y2="250" stroke="currentColor" stroke-width="20"/>
-                    <text x="250" y="135" font-family="Space Mono, monospace" font-weight="700" font-size="200" text-anchor="middle" dominant-baseline="middle" fill="currentColor">XO</text>
-                    <text x="250" y="365" font-family="Inter, sans-serif" font-weight="700" font-size="70" text-anchor="middle" dominant-baseline="middle" fill="currentColor">SOLUTIONS</text>
-                </svg>
+                <div class="logo-box">XO</div>
+                <div class="logo-text">SOLUTIONS</div>
             </a>
             
-            <!-- Quick Access -->
-            <div class="quick-access">
-                <a href="services.html" class="quick-link">Our Services</a>
-                <a href="contact.html" class="quick-link">Get Started</a>
+            <div class="nav-links">
+                <a href="#services" class="nav-link">Our Services</a>
+                <a href="#about" class="nav-link">Get Started</a>
             </div>
             
-            <button class="nav-toggle">MENU</button>
-        </div>
-        
-        <!-- Mega Menu -->
-        <div class="nav-menu">
-            <button class="nav-close">CLOSE</button>
-            
-            <div class="mega-menu">
-                <div class="menu-section">
-                    <h3>Managed IT Services</h3>
-                    <a href="services/xo-specialist.html">XO Specialist</a>
-                    <a href="services/xo-complete.html">XO Complete</a>
-                    <a href="services/xo-ultimate.html">XO Ultimate</a>
-                    <a href="services/xo-assist.html">XO Assist</a>
-                </div>
-                
-                <div class="menu-section">
-                    <h3>Industry Focus</h3>
-                    <a href="sectors/financial-services.html">Financial Services</a>
-                    <a href="sectors/hospitality.html">Hospitality</a>
-                    <a href="sectors/professional-services.html">Professional Services</a>
-                </div>
-                
-                <div class="menu-section">
-                    <h3>Company</h3>
-                    <a href="about.html">About XO Solutions</a>
-                    <a href="services.html">All Services</a>
-                    <a href="sectors.html">Industries We Serve</a>
-                    <a href="contact.html">Contact Us</a>
-                </div>
-                
-                <div class="menu-section">
-                    <h3>Support</h3>
-                    <a href="mailto:hello@xosolutions.co.uk">Enterprise Sales</a>
-                    <a href="mailto:support@xosolutions.co.uk">Technical Support</a>
-                    <a href="contact.html">Request Assessment</a>
-                </div>
-            </div>
+            <button class="menu-btn" id="menuToggle">MENU</button>
         </div>
     </nav>
 
-    <!-- Search Bar -->
-    <div class="search-overlay" id="searchOverlay">
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search services, solutions..." />
-            <button class="search-close" id="searchClose">×</button>
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator">
+        <div class="scroll-dot active" data-section="0" title="Home"></div>
+        <div class="scroll-dot" data-section="1" title="Services"></div>
+        <div class="scroll-dot" data-section="2" title="About"></div>
+        <div class="scroll-dot" data-section="3" title="Contact"></div>
+    </div>
+
+    <!-- Black Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-header">
+            <div class="sidebar-title">MANAGED IT SERVICES</div>
+            <button class="close-btn" id="closeMenu">&times;</button>
         </div>
-        <div class="search-results" id="searchResults"></div>
+        
+        <div class="menu-section">
+            <h3>XO Services</h3>
+            <a href="services/xo-specialist.html" class="menu-item">XO Specialist - Back Office Support</a>
+            <a href="services/xo-complete.html" class="menu-item">XO Complete - Full Front Office</a>
+            <a href="services/xo-ultimate.html" class="menu-item">XO Ultimate - Complete IT Ecosystem</a>
+            <a href="services/xo-assist.html" class="menu-item">XO Assist - Specialist Team Support</a>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Industries</h3>
+            <a href="sectors/financial-services.html" class="menu-item">Financial Services</a>
+            <a href="sectors/hospitality.html" class="menu-item">Hospitality</a>
+            <a href="sectors/professional-services.html" class="menu-item">Professional Services</a>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Company</h3>
+            <a href="about.html" class="menu-item">About XO Solutions</a>
+            <a href="services.html" class="menu-item">All Services</a>
+            <a href="contact.html" class="menu-item">Contact Us</a>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Support</h3>
+            <a href="mailto:hello@xosolutions.co.uk" class="menu-item">Enterprise Sales</a>
+            <a href="mailto:support@xosolutions.co.uk" class="menu-item">Technical Support</a>
+        </div>
     </div>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-main">
-            <h1 class="hero-title animate-on-scroll">
-                XO<br>
-                SOLUTIONS
-            </h1>
-            <p class="hero-subtitle animate-on-scroll">
-                Specialized managed IT services for London's financial services and hospitality sectors. Transparent service delivery, expert UK-based support, and 24/7 monitoring that keeps your business running smoothly.
-            </p>
-            <div class="hero-cta-group animate-on-scroll">
-                <button class="hero-cta" id="openConfigurator">REQUEST ASSESSMENT</button>
-                <button class="search-trigger" id="searchTrigger">EXPLORE SERVICES</button>
-            </div>
-            
-            <!-- Service Stats -->
-            <div class="hero-stats animate-on-scroll">
-                <div class="stat">
-                    <span class="stat-number" data-target="4">0</span>
-                    <span class="stat-label">Service Tiers</span>
+    <section class="hero section">
+        <div class="hero-content">
+            <div class="hero-main">
+                <h1 class="animate-on-scroll">
+                    XO<br>
+                    SOLUTIONS
+                </h1>
+                <p class="hero-subtitle animate-on-scroll">
+                    Specialized managed IT services for London's financial services and hospitality sectors. Transparent service delivery, expert UK-based support, and 24/7 monitoring that keeps your business running smoothly.
+                </p>
+                <div class="hero-actions animate-on-scroll">
+                    <a href="contact.html" class="btn btn-primary">REQUEST ASSESSMENT</a>
+                    <button class="btn btn-secondary" onclick="document.getElementById('menuToggle').click()">EXPLORE SERVICES</button>
                 </div>
-                <div class="stat">
-                    <span class="stat-number" data-target="99.9">0</span>
-                    <span class="stat-label">% Uptime SLA</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number" data-target="24">0</span>
-                    <span class="stat-label">Hour Support</span>
+                
+                <div class="hero-features animate-on-scroll">
+                    <div class="feature-item">
+                        <h4>Specialized Expertise</h4>
+                        <p>Deep knowledge in financial services and hospitality sectors</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>UK-Based Teams</h4>
+                        <p>Expert support and cultural alignment from London</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Transparent Delivery</h4>
+                        <p>Clear service delivery with no hidden charges</p>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="hero-sidebar">
-            <div>
-                <h3>Managed IT Services</h3>
-                <ul class="hero-services">
-                    <li><a href="services/xo-specialist.html">XO Specialist - Back Office Support</a></li>
-                    <li><a href="services/xo-complete.html">XO Complete - Full Front Office</a></li>
-                    <li><a href="services/xo-ultimate.html">XO Ultimate - Complete IT Ecosystem</a></li>
-                    <li><a href="services/xo-assist.html">XO Assist - Specialist Team Support</a></li>
-                </ul>
-            </div>
-            <div class="hero-contact">
-                <span>Enterprise Enquiries</span>
-                hello@xosolutions.co.uk
-            </div>
-        </div>
-        
-        <div class="hero-bottom">
-            <div class="hero-status">
-                <span class="status-indicator"></span>
-                ALL SYSTEMS OPERATIONAL / ACCEPTING NEW CLIENTS
-            </div>
-            <div class="hero-scroll">
-                EXPLORE OUR SERVICES
-                <div class="scroll-arrow">↓</div>
-            </div>
+        <!-- Section Navigation -->
+        <div class="section-nav">
+            <span class="section-nav-text">Explore Services</span>
+            <button class="nav-arrow" onclick="scrollToSection(1)">↓</button>
         </div>
     </section>
 
-    <!-- Service Tiers Overview -->
-    <section class="service-categories" id="services">
-        <div class="categories-container">
-            <div class="categories-header animate-on-scroll">
-                <h2 class="categories-title">
-                    SPECIALIZED<br>
-                    MANAGED IT SERVICES
-                </h2>
-                <p class="categories-description">
-                    Four comprehensive service tiers designed for London businesses with transparent delivery, UK-based expertise, and complete IT ecosystem support.
-                </p>
+    <!-- Services Preview -->
+    <section class="services-preview section" id="services">
+        <div class="services-container">
+            <div class="services-header animate-on-scroll">
+                <h2>SPECIALIZED MANAGED IT SERVICES</h2>
+                <p>Four comprehensive service tiers designed for London businesses with transparent delivery and complete IT ecosystem support.</p>
             </div>
             
-            <div class="categories-grid">
-                <div class="category-card animate-on-scroll" data-category="specialist">
-                    <div class="category-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <rect x="8" y="12" width="32" height="24" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <rect x="14" y="18" width="20" height="4" fill="currentColor"/>
-                            <rect x="14" y="26" width="12" height="4" fill="currentColor"/>
-                            <circle cx="36" cy="20" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
-                        </svg>
-                    </div>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
                     <h3>XO Specialist</h3>
                     <p>Back office support for systems and servers with expert hosting and infrastructure management.</p>
-                    <ul class="category-services">
-                        <li>Expert hosting and system management</li>
-                        <li>Server infrastructure support</li>
-                        <li>Geneva SS&C/Agilysys specialist knowledge</li>
-                        <li>Standard and Premium support options</li>
-                    </ul>
-                    <a href="services/xo-specialist.html" class="category-link">Learn More →</a>
+                    <a href="services/xo-specialist.html" class="service-link">Learn More →</a>
                 </div>
                 
-                <div class="category-card animate-on-scroll" data-category="complete">
-                    <div class="category-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <rect x="6" y="10" width="36" height="24" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <rect x="12" y="16" width="8" height="6" fill="currentColor"/>
-                            <rect x="24" y="16" width="8" height="6" fill="currentColor"/>
-                            <rect x="12" y="24" width="20" height="2" fill="currentColor"/>
-                            <circle cx="38" cy="38" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
-                        </svg>
-                    </div>
+                <div class="service-card animate-on-scroll">
                     <h3>XO Complete</h3>
                     <p>Full front office support providing A to Z client support with complete end-user IT management.</p>
-                    <ul class="category-services">
-                        <li>Complete end-user IT support</li>
-                        <li>2 endpoints with remote support</li>
-                        <li>Desktop support and applications</li>
-                        <li>User management and training</li>
-                    </ul>
-                    <a href="services/xo-complete.html" class="category-link">Learn More →</a>
+                    <a href="services/xo-complete.html" class="service-link">Learn More →</a>
                 </div>
                 
-                <div class="category-card animate-on-scroll" data-category="ultimate">
-                    <div class="category-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <path d="M24 4L32 12H40V36H8V12H16L24 4Z" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <circle cx="24" cy="20" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <path d="M16 28H32" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </div>
+                <div class="service-card animate-on-scroll">
                     <h3>XO Ultimate</h3>
-                    <p>Front AND back office support at exceptional value - both services combined for complete IT ecosystem management.</p>
-                    <ul class="category-services">
-                        <li>All front office services included</li>
-                        <li>All back office services included</li>
-                        <li>Massive value combination pricing</li>
-                        <li>Complete IT ecosystem support</li>
-                    </ul>
-                    <a href="services/xo-ultimate.html" class="category-link">Learn More →</a>
+                    <p>Front AND back office support at exceptional value - both services combined for complete ecosystem management.</p>
+                    <a href="services/xo-ultimate.html" class="service-link">Learn More →</a>
                 </div>
                 
-                <div class="category-card animate-on-scroll" data-category="assist">
-                    <div class="category-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <circle cx="24" cy="16" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <path d="M16 32V30C16 26.6863 18.6863 24 22 24H26C29.3137 24 32 26.6863 32 30V32" stroke="currentColor" stroke-width="2"/>
-                            <rect x="8" y="32" width="32" height="8" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <circle cx="40" cy="12" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
-                        </svg>
-                    </div>
+                <div class="service-card animate-on-scroll">
                     <h3>XO Assist</h3>
-                    <p>Specialized IT team assistance and expert consultation with dedicated specialist allocation and knowledge transfer.</p>
-                    <ul class="category-services">
-                        <li>20-30 hours monthly specialist expertise</li>
-                        <li>Dedicated specialist assigned</li>
-                        <li>Project-based and ad-hoc support</li>
-                        <li>Strategic IT planning and roadmap</li>
-                    </ul>
-                    <a href="services/xo-assist.html" class="category-link">Learn More →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Timeline -->
-    <section class="timeline-section">
-        <div class="timeline-container">
-            <h2 class="timeline-title animate-on-scroll">Your XO Journey</h2>
-            <div class="timeline">
-                <div class="timeline-item animate-on-scroll" data-step="1">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <h3>Discovery & Assessment</h3>
-                        <p>We analyze your current IT infrastructure and business needs to design the perfect XO service configuration</p>
-                        <span class="timeline-duration">Week 1</span>
-                    </div>
-                </div>
-                
-                <div class="timeline-item animate-on-scroll" data-step="2">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <h3>Service Design</h3>
-                        <p>Custom XO service tier selection tailored to your requirements with transparent delivery timelines</p>
-                        <span class="timeline-duration">Week 2</span>
-                    </div>
-                </div>
-                
-                <div class="timeline-item animate-on-scroll" data-step="3">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <h3>Implementation</h3>
-                        <p>Professional deployment with minimal business disruption and comprehensive team integration</p>
-                        <span class="timeline-duration">Weeks 3-4</span>
-                    </div>
-                </div>
-                
-                <div class="timeline-item animate-on-scroll" data-step="4">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <h3>Ongoing Support</h3>
-                        <p>24/7 monitoring, maintenance, and continuous improvement with dedicated UK-based expertise</p>
-                        <span class="timeline-duration">Ongoing</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Industry Focus -->
-    <section class="configurator-preview">
-        <div class="configurator-container">
-            <div class="configurator-header animate-on-scroll">
-                <h2>Specialized Industry Expertise</h2>
-                <p>Our deep sector knowledge enables us to deliver tailored solutions for London's most demanding industries</p>
-            </div>
-            
-            <div class="configurator-widget">
-                <div class="widget-step active" data-step="1">
-                    <h3>Industries We Serve</h3>
-                    <div class="size-options">
-                        <div class="size-option">
-                            <h4>Financial Services</h4>
-                            <p>Banks, investment firms, insurance companies, and fintech businesses requiring robust compliance and security</p>
-                        </div>
-                        <div class="size-option">
-                            <h4>Hospitality</h4>
-                            <p>Hotels, restaurants, entertainment venues needing seamless guest experiences and operational efficiency</p>
-                        </div>
-                        <div class="size-option">
-                            <h4>Professional Services</h4>
-                            <p>Law firms, consultancies, and agencies requiring reliable technology and client confidentiality</p>
-                        </div>
-                    </div>
+                    <p>Specialized IT team assistance and expert consultation with dedicated specialist allocation.</p>
+                    <a href="services/xo-assist.html" class="service-link">Learn More →</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Preview -->
-    <section class="about-preview" id="about">
+    <section class="about-preview section" id="about">
         <div class="about-container">
             <div class="about-content animate-on-scroll">
                 <h2>LONDON'S LEADING MANAGED IT SPECIALISTS</h2>
@@ -332,203 +845,218 @@
                     Our transparent service delivery, UK-based teams, and proven track record managing complex systems across London's premier venues means your technology infrastructure is in expert hands.
                 </p>
                 
-                <div class="about-features">
-                    <div class="feature">
-                        <h4>99.9% Uptime SLA</h4>
-                        <p>Enterprise-grade reliability across all XO service tiers</p>
-                    </div>
-                    <div class="feature">
-                        <h4>24/7 UK-Based Support</h4>
-                        <p>Round-the-clock monitoring and technical assistance from London</p>
-                    </div>
-                    <div class="feature">
-                        <h4>Transparent Delivery</h4>
-                        <p>Clear service tiers and pricing with no hidden charges or surprises</p>
-                    </div>
-                </div>
-                
-                <a href="about.html" class="about-link">Learn More About XO →</a>
+                <a href="about.html" class="btn btn-secondary">Learn More About XO →</a>
             </div>
             
-            <div class="about-stats animate-on-scroll">
-                <div class="stat-item">
-                    <span class="stat-number">4</span>
-                    <span class="stat-label">Service Tiers</span>
+            <div class="about-highlights animate-on-scroll">
+                <div class="about-highlight">
+                    <h4>Specialized Focus</h4>
+                    <p>Financial Services & Hospitality</p>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">3</span>
-                    <span class="stat-label">Industry Specializations</span>
+                <div class="about-highlight">
+                    <h4>Expert Teams</h4>
+                    <p>UK-Based Support</p>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">2025</span>
-                    <span class="stat-label">Launched</span>
+                <div class="about-highlight">
+                    <h4>Founded</h4>
+                    <p>2025</p>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">LONDON</span>
-                    <span class="stat-label">Based</span>
+                <div class="about-highlight">
+                    <h4>Location</h4>
+                    <p>London Based</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="contact section">
         <div class="contact-container">
-            <div class="contact-info animate-on-scroll">
-                <h2>START YOUR XO TRANSFORMATION</h2>
-                <p>
-                    Ready to experience specialized managed IT services? Let's discuss how XO Solutions can transform your technology operations with transparent delivery and expert support.
-                </p>
-                
-                <div class="contact-details">
-                    <h3>Enterprise Sales</h3>
-                    <p>hello@xosolutions.co.uk</p>
-                    
-                    <h3>Response Time</h3>
-                    <p>We respond to enterprise enquiries within 4 hours</p>
-                    
-                    <h3>Free Assessment</h3>
-                    <p>Comprehensive IT assessment and XO service recommendations</p>
-                </div>
+            <h2 class="animate-on-scroll">START YOUR XO TRANSFORMATION</h2>
+            <p class="animate-on-scroll">
+                Ready to experience specialized managed IT services? Let's discuss how XO Solutions can transform your technology operations with transparent delivery and expert support.
+            </p>
+            <div class="animate-on-scroll">
+                <a href="contact.html" class="btn btn-primary">GET YOUR XO ASSESSMENT</a>
             </div>
-            
-            <form class="contact-form animate-on-scroll">
-                <h3>Get Your XO Assessment</h3>
-                
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="company">Company</label>
-                    <input type="text" id="company" name="company" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="employees">Company Size</label>
-                    <select id="employees" name="employees" required>
-                        <option value="">Select size</option>
-                        <option value="1-25">1-25 employees</option>
-                        <option value="26-100">26-100 employees</option>
-                        <option value="100+">100+ employees</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="industry">Industry</label>
-                    <select id="industry" name="industry" required>
-                        <option value="">Select industry</option>
-                        <option value="financial">Financial Services</option>
-                        <option value="hospitality">Hospitality</option>
-                        <option value="professional">Professional Services</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="services">Interested XO Services</label>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" value="xo-specialist"> XO Specialist</label>
-                        <label><input type="checkbox" value="xo-complete"> XO Complete</label>
-                        <label><input type="checkbox" value="xo-ultimate"> XO Ultimate</label>
-                        <label><input type="checkbox" value="xo-assist"> XO Assist</label>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Tell us about your IT challenges</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Describe your current IT setup and main challenges..."></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">Request XO Assessment</button>
-            </form>
         </div>
     </section>
 
-    <!-- Live Chat Widget -->
-    <div class="chat-widget" id="chatWidget">
-        <div class="chat-toggle" id="chatToggle">
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-btn" title="Chat with XO Solutions">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-        </div>
-        
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <h4>XO Solutions Support</h4>
-                <button class="chat-minimize" id="chatMinimize">−</button>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="chat-message bot">
-                    <p>Hello! I'm here to help you learn about our specialized managed IT services. What would you like to know?</p>
-                </div>
-            </div>
-            <div class="chat-input-container">
-                <input type="text" id="chatInput" placeholder="Ask about XO services...">
-                <button id="chatSend">Send</button>
-            </div>
-        </div>
+        </button>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>XO Services</h4>
-                <ul>
-                    <li><a href="services/xo-specialist.html">XO Specialist</a></li>
-                    <li><a href="services/xo-complete.html">XO Complete</a></li>
-                    <li><a href="services/xo-ultimate.html">XO Ultimate</a></li>
-                    <li><a href="services/xo-assist.html">XO Assist</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Industries</h4>
-                <ul>
-                    <li><a href="sectors/financial-services.html">Financial Services</a></li>
-                    <li><a href="sectors/hospitality.html">Hospitality</a></li>
-                    <li><a href="sectors/professional-services.html">Professional Services</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About XO Solutions</a></li>
-                    <li><a href="services.html">All Services</a></li>
-                    <li><a href="sectors.html">Industries We Serve</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="mailto:hello@xosolutions.co.uk">Enterprise Sales</a></li>
-                    <li><a href="mailto:support@xosolutions.co.uk">Technical Support</a></li>
-                    <li>24/7 Service Desk</li>
-                    <li>Emergency Response</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Connect</h4>
-                <p>Specialized managed IT services for London's leading businesses.</p>
-                <p class="footer-email">hello@xosolutions.co.uk</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 XO Solutions Limited. All rights reserved. | Managed IT Services</p>
-        </div>
-    </footer>
+    <script>
+        // Section navigation and scroll snapping
+        const sections = document.querySelectorAll('.section');
+        const scrollDots = document.querySelectorAll('.scroll-dot');
+        let currentSection = 0;
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script src="js/configurator.js"></script>
-    <script src="js/chat.js"></script>
-    <script src="js/animations.js"></script>
+        // Scroll to specific section
+        function scrollToSection(index) {
+            if (index >= 0 && index < sections.length) {
+                sections[index].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                updateScrollIndicator(index);
+            }
+        }
+
+        // Update scroll indicator
+        function updateScrollIndicator(activeIndex) {
+            scrollDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+            currentSection = activeIndex;
+        }
+
+        // Handle scroll indicator clicks
+        scrollDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                scrollToSection(index);
+            });
+        });
+
+        // Track current section on scroll
+        function trackScrollPosition() {
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    if (currentSection !== index) {
+                        updateScrollIndicator(index);
+                    }
+                }
+            });
+        }
+
+        // Throttled scroll listener
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            scrollTimeout = setTimeout(trackScrollPosition, 50);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+                e.preventDefault();
+                if (currentSection < sections.length - 1) {
+                    scrollToSection(currentSection + 1);
+                }
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                e.preventDefault();
+                if (currentSection > 0) {
+                    scrollToSection(currentSection - 1);
+                }
+            }
+        });
+
+        // Hide scroll indicator on mobile
+        function checkMobile() {
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            if (window.innerWidth <= 768) {
+                scrollIndicator.style.display = 'none';
+            } else {
+                scrollIndicator.style.display = 'flex';
+            }
+        }
+
+        window.addEventListener('resize', checkMobile);
+        checkMobile();
+
+        // Menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function openMenu() {
+            sidebarMenu.classList.add('open');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenuFunc() {
+            sidebarMenu.classList.remove('open');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFunc);
+        menuOverlay.addEventListener('click', closeMenuFunc);
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMenuFunc();
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const targetIndex = Array.from(sections).indexOf(target);
+                    if (targetIndex !== -1) {
+                        scrollToSection(targetIndex);
+                    } else {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add loading animation to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (!this.disabled && this.tagName === 'BUTTON') {
+                    this.style.opacity = '0.7';
+                    setTimeout(() => {
+                        this.style.opacity = '1';
+                    }, 300);
+                }
+            });
+        });
+
+        // Initialize
+        updateScrollIndicator(0);
+    </script>
 </body>
 </html>

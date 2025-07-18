@@ -5,33 +5,757 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XO Services - Managed IT Solutions | XO Solutions</title>
     <meta name="description" content="Explore our four specialized managed IT service tiers designed for London's financial services and hospitality sectors. From back office support to complete IT ecosystems.">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --accent: #ff0040;
+            --gray: #888888;
+            --light-gray: #f5f5f5;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--secondary);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            background: var(--primary);
+            color: var(--secondary);
+        }
+
+        .quick-access {
+            display: flex;
+            gap: 1rem;
+            margin-left: auto;
+            margin-right: 2rem;
+        }
+
+        .quick-link {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .quick-link:hover {
+            border-color: var(--accent);
+            background: rgba(255, 0, 64, 0.1);
+        }
+
+        .nav-toggle {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            background: none;
+            border: 2px solid var(--primary);
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .nav-toggle:hover {
+            background: var(--primary);
+            color: var(--secondary);
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background: var(--light-gray);
+            padding: 1rem 0;
+            margin-top: 6rem;
+        }
+
+        .breadcrumbs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .breadcrumb-nav {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .breadcrumb-nav a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Services Hero */
+        .services-hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .services-hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            text-align: center;
+        }
+
+        .services-hero-title {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+
+        .services-hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-summary {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .summary-stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta, .secondary-cta {
+            font-family: 'Space Mono', monospace;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hero-cta {
+            background: var(--accent);
+            color: var(--secondary);
+            border: none;
+        }
+
+        .hero-cta:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .secondary-cta {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .secondary-cta:hover {
+            background: var(--primary);
+            color: var(--secondary);
+        }
+
+        /* Service Categories */
+        .service-categories {
+            padding: 8rem 0;
+            background: var(--secondary);
+        }
+
+        .service-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .category-badge {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            background: var(--accent);
+            color: var(--secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .category-header h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .category-header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-bottom: 8rem;
+        }
+
+        .service-card {
+            background: var(--secondary);
+            border: 2px solid var(--light-gray);
+            border-radius: 12px;
+            padding: 3rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light-gray);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            transition: all 0.3s ease;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--accent);
+            color: var(--secondary);
+        }
+
+        .service-meta h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .service-category-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-description {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .feature-item::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+
+        .service-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .service-link {
+            font-family: 'Space Mono', monospace;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            flex: 1;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .service-link.primary {
+            background: var(--accent);
+            color: var(--secondary);
+            border: none;
+        }
+
+        .service-link.primary:hover {
+            background: var(--primary);
+        }
+
+        .service-link.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .service-link.secondary:hover {
+            background: var(--primary);
+            color: var(--secondary);
+        }
+
+        /* Service Comparison */
+        .service-comparison {
+            padding: 8rem 0;
+            background: var(--light-gray);
+        }
+
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .comparison-header h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            background: var(--secondary);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: var(--secondary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comparison-table td {
+            font-size: 0.9rem;
+        }
+
+        .comparison-table strong {
+            font-family: 'Space Mono', monospace;
+            color: var(--primary);
+        }
+
+        .category-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--secondary);
+        }
+
+        .category-tag.specialist { background: var(--accent); }
+        .category-tag.complete { background: var(--info); }
+        .category-tag.ultimate { background: var(--success); }
+        .category-tag.assist { background: var(--warning); }
+
+        /* Call to Action */
+        .services-cta {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 8rem 0;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .services-cta .hero-cta {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        .services-cta .hero-cta:hover {
+            background: var(--accent);
+            color: var(--secondary);
+        }
+
+        .services-cta .secondary-cta {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .services-cta .secondary-cta:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        .cta-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-stat {
+            text-align: center;
+        }
+
+        .cta-stat .stat-number {
+            color: var(--accent);
+        }
+
+        .cta-stat .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-email {
+            font-family: 'Space Mono', monospace;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+            
+            .quick-access {
+                display: none;
+            }
+            
+            .services-hero-container,
+            .service-container {
+                padding: 0 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .service-card {
+                padding: 2rem;
+            }
+            
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+                align-self: center;
+            }
+            
+            .service-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .service-actions {
+                flex-direction: column;
+            }
+            
+            .services-summary {
+                gap: 2rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-stats {
+                gap: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-hero {
+                padding: 6rem 0 2rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1rem;
+            }
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body data-page="services">
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-progress"></div>
-    </div>
-
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-content">
-            <a href="index.html" class="logo">
-                <svg width="56" height="56" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
-                    <defs>
-                        <style>
-                            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Space+Mono:wght@700&display=swap');
-                        </style>
-                    </defs>
-                    <rect x="20" y="20" width="460" height="460" fill="none" stroke="currentColor" stroke-width="20"/>
-                    <line x1="30" y1="250" x2="470" y2="250" stroke="currentColor" stroke-width="20"/>
-                    <text x="250" y="135" font-family="Space Mono, monospace" font-weight="700" font-size="200" text-anchor="middle" dominant-baseline="middle" fill="currentColor">XO</text>
-                    <text x="250" y="365" font-family="Inter, sans-serif" font-weight="700" font-size="70" text-anchor="middle" dominant-baseline="middle" fill="currentColor">SOLUTIONS</text>
-                </svg>
-            </a>
+            <a href="index.html" class="logo">XO SOLUTIONS</a>
             
             <div class="quick-access">
                 <a href="about.html" class="quick-link">About</a>
@@ -39,35 +763,6 @@
             </div>
             
             <button class="nav-toggle">MENU</button>
-        </div>
-        
-        <div class="nav-menu">
-            <button class="nav-close">CLOSE</button>
-            
-            <div class="mega-menu">
-                <div class="menu-section">
-                    <h3>Managed IT Services</h3>
-                    <a href="services/xo-specialist.html">XO Specialist</a>
-                    <a href="services/xo-complete.html">XO Complete</a>
-                    <a href="services/xo-ultimate.html">XO Ultimate</a>
-                    <a href="services/xo-assist.html">XO Assist</a>
-                </div>
-                
-                <div class="menu-section">
-                    <h3>Industry Focus</h3>
-                    <a href="sectors/financial-services.html">Financial Services</a>
-                    <a href="sectors/hospitality.html">Hospitality</a>
-                    <a href="sectors/professional-services.html">Professional Services</a>
-                </div>
-                
-                <div class="menu-section">
-                    <h3>Company</h3>
-                    <a href="about.html">About</a>
-                    <a href="services.html">All Services</a>
-                    <a href="sectors.html">Sectors</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </div>
         </div>
     </nav>
 
@@ -85,86 +780,39 @@
     <!-- Services Hero -->
     <section class="services-hero">
         <div class="services-hero-container">
-            <div class="services-hero-content animate-on-scroll">
-                <h1 class="services-hero-title">
-                    SPECIALIZED<br>
-                    MANAGED IT SERVICES
-                </h1>
-                <p class="services-hero-subtitle">
-                    Four comprehensive service tiers designed specifically for London's financial services and hospitality sectors. Transparent delivery, expert UK-based support, and complete IT ecosystem management.
-                </p>
-                
-                <div class="services-summary">
-                    <div class="summary-stat">
-                        <span class="stat-number" data-counter="4">0</span>
-                        <span class="stat-label">Service Tiers</span>
-                    </div>
-                    <div class="summary-stat">
-                        <span class="stat-number" data-counter="99.9">0</span>
-                        <span class="stat-label">% Uptime SLA</span>
-                    </div>
-                    <div class="summary-stat">
-                        <span class="stat-number" data-counter="24">0</span>
-                        <span class="stat-label">Hour Support</span>
-                    </div>
+            <h1 class="services-hero-title animate-on-scroll">
+                SPECIALIZED<br>
+                MANAGED IT SERVICES
+            </h1>
+            <p class="services-hero-subtitle animate-on-scroll">
+                Four comprehensive service tiers designed specifically for London's financial services and hospitality sectors. Transparent delivery, expert UK-based support, and complete IT ecosystem management.
+            </p>
+            
+            <div class="services-summary animate-on-scroll">
+                <div class="summary-stat">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Service Tiers</span>
                 </div>
-                
-                <div class="hero-actions">
-                    <a href="contact.html" class="hero-cta">REQUEST ASSESSMENT</a>
-                    <a href="#service-tiers" class="secondary-cta">EXPLORE SERVICES</a>
+                <div class="summary-stat">
+                    <span class="stat-number">99.9</span>
+                    <span class="stat-label">% Uptime SLA</span>
+                </div>
+                <div class="summary-stat">
+                    <span class="stat-number">24</span>
+                    <span class="stat-label">Hour Support</span>
                 </div>
             </div>
             
-            <div class="services-hero-visual animate-on-scroll" data-animation="slideRight">
-                <div class="service-overview-chart">
-                    <div class="chart-segment specialist" data-tooltip="XO Specialist - Back Office Support">
-                        <span class="segment-label">SPECIALIST</span>
-                    </div>
-                    <div class="chart-segment complete" data-tooltip="XO Complete - Full Front Office">
-                        <span class="segment-label">COMPLETE</span>
-                    </div>
-                    <div class="chart-segment ultimate" data-tooltip="XO Ultimate - Complete Ecosystem">
-                        <span class="segment-label">ULTIMATE</span>
-                    </div>
-                    <div class="chart-segment assist" data-tooltip="XO Assist - Expert Consultation">
-                        <span class="segment-label">ASSIST</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Service Tiers Navigation -->
-    <section class="service-categories-nav">
-        <div class="categories-nav-container">
-            <div class="nav-items">
-                <a href="#xo-specialist" class="nav-item active" data-category="specialist">
-                    <span class="nav-number">01</span>
-                    <span class="nav-label">XO Specialist</span>
-                    <span class="nav-description">Back office systems & servers</span>
-                </a>
-                <a href="#xo-complete" class="nav-item" data-category="complete">
-                    <span class="nav-number">02</span>
-                    <span class="nav-label">XO Complete</span>
-                    <span class="nav-description">Full front office support</span>
-                </a>
-                <a href="#xo-ultimate" class="nav-item" data-category="ultimate">
-                    <span class="nav-number">03</span>
-                    <span class="nav-label">XO Ultimate</span>
-                    <span class="nav-description">Complete IT ecosystem</span>
-                </a>
-                <a href="#xo-assist" class="nav-item" data-category="assist">
-                    <span class="nav-number">04</span>
-                    <span class="nav-label">XO Assist</span>
-                    <span class="nav-description">Specialist team assistance</span>
-                </a>
+            <div class="hero-actions animate-on-scroll">
+                <a href="contact.html" class="hero-cta">REQUEST ASSESSMENT</a>
+                <a href="#xo-specialist" class="secondary-cta">EXPLORE SERVICES</a>
             </div>
         </div>
     </section>
 
     <!-- XO Specialist -->
-    <section class="service-category" id="xo-specialist">
-        <div class="category-container">
+    <section class="service-categories" id="xo-specialist">
+        <div class="service-container">
             <div class="category-header animate-on-scroll">
                 <div class="category-badge">XO SPECIALIST</div>
                 <h2>BACK OFFICE SUPPORT</h2>
@@ -172,7 +820,7 @@
             </div>
             
             <div class="services-grid">
-                <div class="service-card animate-on-scroll" data-delay="100">
+                <div class="service-card animate-on-scroll">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -192,18 +840,10 @@
                         <p class="service-description">Professional hosting and comprehensive system management with specialist knowledge in industry-specific platforms and applications.</p>
                         
                         <div class="service-features">
-                            <div class="feature-item">
-                                <span class="feature-icon">Expert hosting and system management</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">Server infrastructure support</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">Geneva SS&C specialist knowledge</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">Agilysys platform expertise</span>
-                            </div>
+                            <div class="feature-item">Expert hosting and system management</div>
+                            <div class="feature-item">Server infrastructure support</div>
+                            <div class="feature-item">Geneva SS&C specialist knowledge</div>
+                            <div class="feature-item">Agilysys platform expertise</div>
                         </div>
                         
                         <div class="service-stats">
@@ -224,7 +864,7 @@
                     
                     <div class="service-actions">
                         <a href="services/xo-specialist.html" class="service-link primary">Learn More</a>
-                        <button class="service-link secondary" data-open-chat="Tell me about XO Specialist">Quick Info</button>
+                        <a href="contact.html" class="service-link secondary">Get Quote</a>
                     </div>
                 </div>
             </div>
@@ -232,8 +872,8 @@
     </section>
 
     <!-- XO Complete -->
-    <section class="service-category" id="xo-complete">
-        <div class="category-container">
+    <section class="service-categories" id="xo-complete">
+        <div class="service-container">
             <div class="category-header animate-on-scroll">
                 <div class="category-badge">XO COMPLETE</div>
                 <h2>FULL FRONT OFFICE SUPPORT</h2>
@@ -241,7 +881,7 @@
             </div>
             
             <div class="services-grid">
-                <div class="service-card animate-on-scroll" data-delay="100">
+                <div class="service-card animate-on-scroll">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -262,18 +902,10 @@
                         <p class="service-description">Comprehensive front office IT support and management with full end-user assistance, remote capabilities, and complete application management.</p>
                         
                         <div class="service-features">
-                            <div class="feature-item">
-                                <span class="feature-icon">Complete end-user IT support</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">2 endpoints with remote support</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">Desktop support and applications</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">User management and VPN</span>
-                            </div>
+                            <div class="feature-item">Complete end-user IT support</div>
+                            <div class="feature-item">2 endpoints with remote support</div>
+                            <div class="feature-item">Desktop support and applications</div>
+                            <div class="feature-item">User management and VPN</div>
                         </div>
                         
                         <div class="service-stats">
@@ -294,7 +926,7 @@
                     
                     <div class="service-actions">
                         <a href="services/xo-complete.html" class="service-link primary">Learn More</a>
-                        <button class="service-link secondary" data-open-chat="Tell me about XO Complete">Quick Info</button>
+                        <a href="contact.html" class="service-link secondary">Get Quote</a>
                     </div>
                 </div>
             </div>
@@ -302,8 +934,8 @@
     </section>
 
     <!-- XO Ultimate -->
-    <section class="service-category" id="xo-ultimate">
-        <div class="category-container">
+    <section class="service-categories" id="xo-ultimate">
+        <div class="service-container">
             <div class="category-header animate-on-scroll">
                 <div class="category-badge">XO ULTIMATE</div>
                 <h2>COMPLETE IT ECOSYSTEM</h2>
@@ -311,7 +943,7 @@
             </div>
             
             <div class="services-grid">
-                <div class="service-card animate-on-scroll" data-delay="100">
+                <div class="service-card animate-on-scroll">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -330,18 +962,10 @@
                         <p class="service-description">Maximum value package combining all front office and back office services. Complete IT ecosystem support at a discounted rate compared to separate services.</p>
                         
                         <div class="service-features">
-                            <div class="feature-item">
-                                <span class="feature-icon">All front office services included</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">All back office services included</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">Massive value combination pricing</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">Complete IT ecosystem support</span>
-                            </div>
+                            <div class="feature-item">All front office services included</div>
+                            <div class="feature-item">All back office services included</div>
+                            <div class="feature-item">Massive value combination pricing</div>
+                            <div class="feature-item">Complete IT ecosystem support</div>
                         </div>
                         
                         <div class="service-stats">
@@ -362,7 +986,7 @@
                     
                     <div class="service-actions">
                         <a href="services/xo-ultimate.html" class="service-link primary">Learn More</a>
-                        <button class="service-link secondary" data-open-chat="Tell me about XO Ultimate">Quick Info</button>
+                        <a href="contact.html" class="service-link secondary">Get Quote</a>
                     </div>
                 </div>
             </div>
@@ -370,8 +994,8 @@
     </section>
 
     <!-- XO Assist -->
-    <section class="service-category" id="xo-assist">
-        <div class="category-container">
+    <section class="service-categories" id="xo-assist">
+        <div class="service-container">
             <div class="category-header animate-on-scroll">
                 <div class="category-badge">XO ASSIST</div>
                 <h2>SPECIALIST TEAM ASSISTANCE</h2>
@@ -379,7 +1003,7 @@
             </div>
             
             <div class="services-grid">
-                <div class="service-card animate-on-scroll" data-delay="100">
+                <div class="service-card animate-on-scroll">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -399,18 +1023,10 @@
                         <p class="service-description">Specialized IT team assistance and expert consultation with monthly allocation of specialist expertise. Includes knowledge transfer and strategic planning.</p>
                         
                         <div class="service-features">
-                            <div class="feature-item">
-                                <span class="feature-icon">20-30 hours monthly specialist expertise</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">Dedicated specialist assigned to client</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">Project-based and ad-hoc support</span>
-                            </div>
-                            <div class="feature-item">
-                                <span class="feature-icon">Strategic IT planning and roadmap</span>
-                            </div>
+                            <div class="feature-item">20-30 hours monthly specialist expertise</div>
+                            <div class="feature-item">Dedicated specialist assigned to client</div>
+                            <div class="feature-item">Project-based and ad-hoc support</div>
+                            <div class="feature-item">Strategic IT planning and roadmap</div>
                         </div>
                         
                         <div class="service-stats">
@@ -431,16 +1047,16 @@
                     
                     <div class="service-actions">
                         <a href="services/xo-assist.html" class="service-link primary">Learn More</a>
-                        <button class="service-link secondary" data-open-chat="Tell me about XO Assist">Quick Info</button>
+                        <a href="contact.html" class="service-link secondary">Get Quote</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Service Comparison Matrix -->
+    <!-- Service Comparison -->
     <section class="service-comparison">
-        <div class="comparison-container">
+        <div class="service-container">
             <div class="comparison-header animate-on-scroll">
                 <h2>SERVICE COMPARISON OVERVIEW</h2>
                 <p>Compare our XO service tiers to find the perfect fit for your business needs and operational requirements.</p>
@@ -492,123 +1108,34 @@
         </div>
     </section>
 
-    <!-- Additional Revenue Streams -->
-    <section class="implementation-process">
-        <div class="process-container">
-            <div class="process-header animate-on-scroll">
-                <h2>COMPREHENSIVE SERVICE DELIVERY</h2>
-                <p>Beyond our core service tiers, we provide additional services and management to ensure complete IT ecosystem support.</p>
-            </div>
-            
-            <div class="process-timeline">
-                <div class="process-step animate-on-scroll" data-delay="100">
-                    <div class="step-marker">1</div>
-                    <div class="step-content">
-                        <h3>License Management</h3>
-                        <p>Complete software license management including Office 365, Adobe, and other business applications with transparent management fees.</p>
-                        <div class="step-deliverables">
-                            <li>All software licenses managed</li>
-                            <li>Transparent fee structure</li>
-                            <li>License optimization and compliance</li>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="process-step animate-on-scroll" data-delay="200">
-                    <div class="step-marker">2</div>
-                    <div class="step-content">
-                        <h3>AWS Environment Management</h3>
-                        <p>Professional AWS infrastructure management with cost optimization and performance monitoring for cloud-based operations.</p>
-                        <div class="step-deliverables">
-                            <li>AWS infrastructure management</li>
-                            <li>Cost optimization strategies</li>
-                            <li>Performance monitoring and tuning</li>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="process-step animate-on-scroll" data-delay="300">
-                    <div class="step-marker">3</div>
-                    <div class="step-content">
-                        <h3>Annual Service Enhancement</h3>
-                        <p>All service tiers include annual enhancement and optimization to ensure your IT infrastructure evolves with your business needs.</p>
-                        <div class="step-deliverables">
-                            <li>Annual service improvements</li>
-                            <li>Technology updates and upgrades</li>
-                            <li>Performance optimization reviews</li>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="process-step animate-on-scroll" data-delay="400">
-                    <div class="step-marker">4</div>
-                    <div class="step-content">
-                        <h3>Emergency & Overage Support</h3>
-                        <p>Weekend emergency support for standard tier clients and overage billing for extended requirements beyond standard allocations.</p>
-                        <div class="step-deliverables">
-                            <li>Weekend emergency response</li>
-                            <li>Flexible overage billing</li>
-                            <li>Extended support when needed</li>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Call to Action -->
     <section class="services-cta">
-        <div class="cta-container">
+        <div class="service-container">
             <div class="cta-content animate-on-scroll">
                 <h2>Ready to Transform Your IT Operations?</h2>
                 <p>Let's discuss which XO service tier is perfect for your business. Our experts will help you build the ideal technology foundation for growth and success.</p>
                 <div class="cta-actions">
                     <a href="contact.html" class="hero-cta">REQUEST YOUR ASSESSMENT</a>
-                    <button class="secondary-cta" data-open-chat="I want to discuss XO service options">SPEAK WITH EXPERT</button>
+                    <a href="about.html" class="secondary-cta">LEARN MORE ABOUT XO</a>
                 </div>
             </div>
             
             <div class="cta-stats">
                 <div class="cta-stat">
-                    <span class="stat-number" data-counter="99.9">0</span>
+                    <span class="stat-number">99.9</span>
                     <span class="stat-label">% Uptime Guarantee</span>
                 </div>
                 <div class="cta-stat">
-                    <span class="stat-number" data-counter="24">0</span>
+                    <span class="stat-number">24</span>
                     <span class="stat-label">Hour Support</span>
                 </div>
                 <div class="cta-stat">
-                    <span class="stat-number" data-counter="4">0</span>
+                    <span class="stat-number">4</span>
                     <span class="stat-label">Service Tiers</span>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Live Chat Widget -->
-    <div class="chat-widget" id="chatWidget">
-        <div class="chat-toggle" id="chatToggle">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-        
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <h4>XO Solutions Support</h4>
-                <button class="chat-minimize" id="chatMinimize">−</button>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="chat-message bot">
-                    <p>Hi! I see you're exploring our XO service tiers. I can help you understand which service would be perfect for your business needs!</p>
-                </div>
-            </div>
-            <div class="chat-input-container">
-                <input type="text" id="chatInput" placeholder="Ask about XO services...">
-                <button id="chatSend">Send</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -659,10 +1186,44 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script src="js/configurator.js"></script>
-    <script src="js/chat.js"></script>
-    <script src="js/animations.js"></script>
+    <script>
+        // Simple animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple nav toggle (placeholder)
+        document.querySelector('.nav-toggle')?.addEventListener('click', function() {
+            alert('Menu functionality would be implemented here');
+        });
+    </script>
 </body>
 </html>

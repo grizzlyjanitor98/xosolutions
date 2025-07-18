@@ -5,32 +5,889 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact XO Solutions - Managed IT Services Assessment</title>
     <meta name="description" content="Get in touch with XO Solutions for specialized managed IT services consultation. Free assessment, transparent proposals, and expert guidance for London businesses.">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --accent: #ff0040;
+            --gray: #888888;
+            --light-gray: #f5f5f5;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--secondary);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo-box {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .logo-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .quick-access {
+            display: flex;
+            gap: 1rem;
+            margin-left: auto;
+            margin-right: 2rem;
+        }
+
+        .quick-link {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .quick-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-toggle {
+            font-family: 'Space Mono', monospace;
+            background: none;
+            border: 2px solid var(--primary);
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-toggle:hover {
+            background: var(--primary);
+            color: var(--secondary);
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background: var(--light-gray);
+            padding: 1rem 0;
+            margin-top: 6rem;
+        }
+
+        .breadcrumbs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .breadcrumb-nav {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .breadcrumb-nav a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Contact Hero */
+        .contact-hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .contact-hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .contact-hero-title {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+
+        .contact-hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .contact-highlights {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--secondary);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .highlight-content h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .highlight-content p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Contact Methods */
+        .contact-methods {
+            padding: 8rem 0;
+            background: var(--secondary);
+        }
+
+        .methods-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .methods-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .methods-header h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .method-card {
+            background: var(--light-gray);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .method-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .method-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .method-card:hover .method-icon {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .method-card h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .method-card p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .method-details {
+            background: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .method-details strong {
+            font-family: 'Space Mono', monospace;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .method-details span {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .method-action {
+            font-family: 'Space Mono', monospace;
+            background: var(--accent);
+            color: var(--secondary);
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .method-action:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Main Contact Form */
+        .main-contact {
+            padding: 8rem 0;
+            background: var(--light-gray);
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 6rem;
+        }
+
+        .contact-info h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .contact-benefits {
+            margin-bottom: 3rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--secondary);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .benefit-content p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--secondary);
+            border: 2px solid var(--primary);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .form-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .form-header h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .form-section {
+            margin-bottom: 3rem;
+        }
+
+        .form-section h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            border: 2px solid var(--light-gray);
+            background: var(--secondary);
+            padding: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 0, 64, 0.1);
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .checkbox-grid label {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-grid label:hover {
+            border-color: var(--accent);
+            background: rgba(255, 0, 64, 0.05);
+        }
+
+        .checkbox-grid input {
+            margin-right: 0.8rem;
+            width: auto;
+            height: auto;
+            accent-color: var(--accent);
+        }
+
+        /* Multi-step Form */
+        .form-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-number {
+            background: var(--accent);
+            color: var(--secondary);
+        }
+
+        .step-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-label {
+            color: var(--primary);
+        }
+
+        .progress-line {
+            width: 100px;
+            height: 2px;
+            background: var(--light-gray);
+            margin: 0 1rem;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: slideInForm 0.4s ease;
+        }
+
+        @keyframes slideInForm {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-navigation {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+            justify-content: space-between;
+        }
+
+        .nav-btn {
+            font-family: 'Space Mono', monospace;
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .next-btn, .submit-btn {
+            background: var(--accent);
+            color: var(--secondary);
+            margin-left: auto;
+        }
+
+        .next-btn:hover, .submit-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            margin-right: auto;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: var(--secondary);
+        }
+
+        .submit-btn {
+            flex: 2;
+            max-width: 300px;
+        }
+
+        .form-note {
+            font-size: 0.8rem;
+            color: var(--gray);
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* Response Times */
+        .response-times {
+            padding: 6rem 0;
+            background: var(--primary);
+            color: var(--secondary);
+        }
+
+        .times-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .times-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .times-header h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .times-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .time-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .time-card:hover {
+            border-color: var(--accent);
+            background: rgba(255, 0, 64, 0.1);
+        }
+
+        .time-card h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .time-details {
+            text-align: left;
+        }
+
+        .time-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .time-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-email {
+            font-family: 'Space Mono', monospace;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+            
+            .quick-access {
+                display: none;
+            }
+            
+            .contact-hero-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .methods-container,
+            .times-container {
+                padding: 0 1.5rem;
+            }
+            
+            .methods-grid,
+            .times-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+            
+            .form-navigation {
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+            
+            .nav-btn {
+                max-width: none;
+                padding: 1rem;
+            }
+            
+            .progress-line {
+                width: 60px;
+                margin: 0 0.5rem;
+            }
+            
+            .step-label {
+                font-size: 0.7rem;
+            }
+            
+            .form-progress {
+                margin-bottom: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body data-page="contact">
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-progress"></div>
-    </div>
-
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-content">
             <a href="index.html" class="logo">
-                <svg width="56" height="56" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
-                    <defs>
-                        <style>
-                            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Space+Mono:wght@700&display=swap');
-                        </style>
-                    </defs>
-                    <rect x="20" y="20" width="460" height="460" fill="none" stroke="currentColor" stroke-width="20"/>
-                    <line x1="30" y1="250" x2="470" y2="250" stroke="currentColor" stroke-width="20"/>
-                    <text x="250" y="135" font-family="Space Mono, monospace" font-weight="700" font-size="200" text-anchor="middle" dominant-baseline="middle" fill="currentColor">XO</text>
-                    <text x="250" y="365" font-family="Inter, sans-serif" font-weight="700" font-size="70" text-anchor="middle" dominant-baseline="middle" fill="currentColor">SOLUTIONS</text>
-                </svg>
+                <div class="logo-box">XO</div>
+                <div class="logo-text">SOLUTIONS</div>
             </a>
             
             <div class="quick-access">
@@ -39,35 +896,6 @@
             </div>
             
             <button class="nav-toggle">MENU</button>
-        </div>
-        
-        <div class="nav-menu">
-            <button class="nav-close">CLOSE</button>
-            
-            <div class="mega-menu">
-                <div class="menu-section">
-                    <h3>Managed IT Services</h3>
-                    <a href="services/xo-specialist.html">XO Specialist</a>
-                    <a href="services/xo-complete.html">XO Complete</a>
-                    <a href="services/xo-ultimate.html">XO Ultimate</a>
-                    <a href="services/xo-assist.html">XO Assist</a>
-                </div>
-                
-                <div class="menu-section">
-                    <h3>Industry Focus</h3>
-                    <a href="sectors/financial-services.html">Financial Services</a>
-                    <a href="sectors/hospitality.html">Hospitality</a>
-                    <a href="sectors/professional-services.html">Professional Services</a>
-                </div>
-                
-                <div class="menu-section">
-                    <h3>Company</h3>
-                    <a href="about.html">About</a>
-                    <a href="services.html">All Services</a>
-                    <a href="sectors.html">Sectors</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </div>
         </div>
     </nav>
 
@@ -96,48 +924,38 @@
                 
                 <div class="contact-highlights">
                     <div class="highlight-item">
-                        <span class="highlight-icon">Free Consultation</span>
+                        <div class="highlight-icon">FREE</div>
                         <div class="highlight-content">
                             <h4>Comprehensive Assessment</h4>
                             <p>Complete IT evaluation and XO service recommendations</p>
                         </div>
                     </div>
                     <div class="highlight-item">
-                        <span class="highlight-icon">Quick Response</span>
+                        <div class="highlight-icon">4HR</div>
                         <div class="highlight-content">
-                            <h4>4 Hour Response</h4>
+                            <h4>Quick Response</h4>
                             <p>We respond to enterprise enquiries within 4 hours</p>
                         </div>
                     </div>
                     <div class="highlight-item">
-                        <span class="highlight-icon">Custom Solutions</span>
+                        <div class="highlight-icon">XO</div>
                         <div class="highlight-content">
-                            <h4>Tailored Service Tiers</h4>
+                            <h4>Custom Solutions</h4>
                             <p>XO service packages designed for your specific needs</p>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="contact-hero-visual animate-on-scroll" data-animation="slideRight">
+            <div class="contact-hero-visual animate-on-scroll">
                 <div class="contact-card">
                     <div class="card-header">
                         <h3>Get Started Today</h3>
                         <p>Choose how you'd like to connect with our specialist team</p>
                     </div>
                     <div class="contact-options">
-                        <a href="#contact-form" class="contact-option">
-                            <span class="option-icon">Assessment Form</span>
-                            <span class="option-text">Complete detailed assessment</span>
-                        </a>
-                        <a href="mailto:hello@xosolutions.co.uk" class="contact-option">
-                            <span class="option-icon">Direct Email</span>
-                            <span class="option-text">hello@xosolutions.co.uk</span>
-                        </a>
-                        <button class="contact-option" id="openChatFromHero">
-                            <span class="option-icon">Live Chat</span>
-                            <span class="option-text">Start conversation</span>
-                        </button>
+                        <a href="#contact-form" class="method-action">Assessment Form</a>
+                        <a href="mailto:hello@xosolutions.co.uk" class="method-action">Direct Email</a>
                     </div>
                 </div>
             </div>
@@ -153,7 +971,7 @@
             </div>
             
             <div class="methods-grid">
-                <div class="method-card animate-on-scroll" data-delay="100">
+                <div class="method-card animate-on-scroll">
                     <div class="method-icon">
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                             <rect x="6" y="10" width="36" height="24" stroke="currentColor" stroke-width="2" fill="none"/>
@@ -169,22 +987,7 @@
                     <a href="mailto:hello@xosolutions.co.uk" class="method-action">Send Email</a>
                 </div>
                 
-                <div class="method-card animate-on-scroll" data-delay="200">
-                    <div class="method-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3>Live Chat</h3>
-                    <p>Get instant answers about XO service tiers, sector specialization, and implementation timelines from our specialist team.</p>
-                    <div class="method-details">
-                        <strong>Available 24/7</strong>
-                        <span>Instant specialist responses</span>
-                    </div>
-                    <button class="method-action" id="openChatFromMethods">Start Chat</button>
-                </div>
-                
-                <div class="method-card animate-on-scroll" data-delay="300">
+                <div class="method-card animate-on-scroll">
                     <div class="method-icon">
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                             <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2" fill="none"/>
@@ -200,7 +1003,7 @@
                     <a href="#contact-form" class="method-action">Schedule Consultation</a>
                 </div>
                 
-                <div class="method-card animate-on-scroll" data-delay="400">
+                <div class="method-card animate-on-scroll">
                     <div class="method-icon">
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                             <path d="M12 20C12 16.6863 14.6863 14 18 14H30C33.3137 14 36 16.6863 36 20V28C36 31.3137 33.3137 34 30 34H18C14.6863 34 12 31.3137 12 28V20Z" stroke="currentColor" stroke-width="2" fill="none"/>
@@ -211,7 +1014,7 @@
                     <p>Already an XO client? Get technical assistance and support for your existing managed IT services.</p>
                     <div class="method-details">
                         <strong>support@xosolutions.co.uk</strong>
-                        <span>24/7 for XO clients</span>
+                        <span>Priority support for clients</span>
                     </div>
                     <a href="mailto:support@xosolutions.co.uk" class="method-action">Get Support</a>
                 </div>
@@ -225,167 +1028,165 @@
             <div class="contact-info animate-on-scroll">
                 <h2>GET YOUR XO ASSESSMENT</h2>
                 <p>
-                    Tell us about your business and IT challenges. Our specialists will provide personalized XO service tier recommendations and a detailed implementation plan.
+                    Tell us about your business in just two quick steps. Our specialists will provide personalized XO service recommendations and implementation guidance.
                 </p>
                 
                 <div class="contact-benefits">
                     <div class="benefit-item">
-                        <span class="benefit-icon">Comprehensive Assessment</span>
+                        <div class="benefit-icon">✓</div>
                         <div class="benefit-content">
-                            <h4>Complete IT Infrastructure Analysis</h4>
-                            <p>Detailed evaluation of your current systems and business needs</p>
+                            <h4>Quick 2-Step Process</h4>
+                            <p>Simple form that takes less than 3 minutes to complete</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <span class="benefit-icon">Custom Recommendations</span>
+                        <div class="benefit-icon">✓</div>
                         <div class="benefit-content">
-                            <h4>Tailored XO Service Selection</h4>
-                            <p>Personalized service tier recommendations based on your requirements</p>
+                            <h4>Personalized Recommendations</h4>
+                            <p>Tailored XO service suggestions based on your specific needs</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <span class="benefit-icon">Implementation Roadmap</span>
+                        <div class="benefit-icon">✓</div>
                         <div class="benefit-content">
-                            <h4>Clear Timeline and Milestones</h4>
-                            <p>Transparent implementation plan for your XO transformation</p>
+                            <h4>Expert Consultation</h4>
+                            <p>Detailed discussion with our specialists within 4 hours</p>
                         </div>
                     </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">Transparent Proposal</span>
-                        <div class="benefit-content">
-                            <h4>Clear Service Tier Structure</h4>
-                            <p>No hidden charges - transparent service delivery and expectations</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-guarantee">
-                    <h4>Our Commitment</h4>
-                    <ul>
-                        <li>Free initial consultation and comprehensive assessment</li>
-                        <li>Response within 4 hours during business days</li>
-                        <li>No obligation - specialist advice regardless of decision</li>
-                        <li>Confidential discussion of your IT requirements</li>
-                    </ul>
                 </div>
             </div>
             
-            <form class="contact-form animate-on-scroll" data-animation="slideRight">
-                <div class="form-header">
-                    <h3>Start Your XO Journey</h3>
-                    <p>Complete this form to get personalized XO service tier recommendations</p>
+            <form class="contact-form animate-on-scroll" id="contactForm">
+                <!-- Progress Indicator -->
+                <div class="form-progress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Contact Info</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Project Details</div>
+                    </div>
                 </div>
                 
-                <div class="form-section">
-                    <h4>Contact Information</h4>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
+                <!-- Step 1: Contact & Company Info -->
+                <div class="form-step active" data-step="1">
+                    <div class="form-header">
+                        <h3>Let's Get Started</h3>
+                        <p>Tell us about you and your company</p>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="email">Business Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-row">
+                    <div class="form-section">
+                        <h4>Contact Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
+                            <label for="email">Business Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number (Optional)</label>
                             <input type="tel" id="phone" name="phone">
                         </div>
-                        <div class="form-group">
-                            <label for="jobTitle">Job Title</label>
-                            <input type="text" id="jobTitle" name="jobTitle">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-section">
-                    <h4>Company Information</h4>
-                    <div class="form-group">
-                        <label for="company">Company Name</label>
-                        <input type="text" id="company" name="company" required>
                     </div>
                     
-                    <div class="form-row">
+                    <div class="form-section">
+                        <h4>Company Information</h4>
                         <div class="form-group">
-                            <label for="industry">Industry Sector</label>
-                            <select id="industry" name="industry" required>
-                                <option value="">Select sector</option>
-                                <option value="financial-services">Financial Services</option>
-                                <option value="hospitality">Hospitality</option>
-                                <option value="professional-services">Professional Services</option>
-                                <option value="technology">Technology</option>
-                                <option value="healthcare">Healthcare</option>
-                                <option value="other">Other</option>
-                            </select>
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company" required>
                         </div>
-                        <div class="form-group">
-                            <label for="employees">Company Size</label>
-                            <select id="employees" name="employees" required>
-                                <option value="">Select size</option>
-                                <option value="1-25">1-25 employees</option>
-                                <option value="26-100">26-100 employees</option>
-                                <option value="101-500">101-500 employees</option>
-                                <option value="500+">500+ employees</option>
-                            </select>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="industry">Industry Sector</label>
+                                <select id="industry" name="industry" required>
+                                    <option value="">Select sector</option>
+                                    <option value="financial-services">Financial Services</option>
+                                    <option value="hospitality">Hospitality</option>
+                                    <option value="professional-services">Professional Services</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="employees">Company Size</label>
+                                <select id="employees" name="employees" required>
+                                    <option value="">Select size</option>
+                                    <option value="1-25">1-25 employees</option>
+                                    <option value="26-100">26-100 employees</option>
+                                    <option value="101-500">101-500 employees</option>
+                                    <option value="500+">500+ employees</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="location">London Location</label>
-                        <input type="text" id="location" name="location" placeholder="e.g., City of London, Canary Wharf, Westminster">
+                    <div class="form-navigation">
+                        <button type="button" class="nav-btn next-btn" id="nextStep">NEXT: PROJECT DETAILS →</button>
                     </div>
                 </div>
                 
-                <div class="form-section">
-                    <h4>XO Service Interest</h4>
-                    <div class="form-group">
-                        <label>Which XO service tier interests you? (Select all that apply)</label>
-                        <div class="checkbox-grid">
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="services" value="xo-specialist">
-                                <span class="checkbox-text">
-                                    <strong>XO Specialist</strong>
-                                    <small>Back office systems and servers</small>
-                                </span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="services" value="xo-complete">
-                                <span class="checkbox-text">
-                                    <strong>XO Complete</strong>
-                                    <small>Full front office support</small>
-                                </span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="services" value="xo-ultimate">
-                                <span class="checkbox-text">
-                                    <strong>XO Ultimate</strong>
-                                    <small>Complete IT ecosystem</small>
-                                </span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="services" value="xo-assist">
-                                <span class="checkbox-text">
-                                    <strong>XO Assist</strong>
-                                    <small>Specialist team assistance</small>
-                                </span>
-                            </label>
+                <!-- Step 2: Project Details -->
+                <div class="form-step" data-step="2">
+                    <div class="form-header">
+                        <h3>Project Requirements</h3>
+                        <p>Help us understand your IT needs</p>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h4>XO Service Interest</h4>
+                        <div class="form-group">
+                            <label>Which XO services interest you? (Select all that apply)</label>
+                            <div class="checkbox-grid">
+                                <label>
+                                    <input type="checkbox" name="services" value="xo-specialist">
+                                    <span>
+                                        <strong>XO Specialist</strong><br>
+                                        <small>Back office systems & servers</small>
+                                    </span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="services" value="xo-complete">
+                                    <span>
+                                        <strong>XO Complete</strong><br>
+                                        <small>Full front office support</small>
+                                    </span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="services" value="xo-ultimate">
+                                    <span>
+                                        <strong>XO Ultimate</strong><br>
+                                        <small>Complete IT ecosystem</small>
+                                    </span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="services" value="xo-assist">
+                                    <span>
+                                        <strong>XO Assist</strong><br>
+                                        <small>Specialist team assistance</small>
+                                    </span>
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="form-section">
-                    <h4>Project Details</h4>
-                    <div class="form-row">
+                    
+                    <div class="form-section">
+                        <h4>Timeline & Requirements</h4>
                         <div class="form-group">
-                            <label for="timeline">Desired Timeline</label>
+                            <label for="timeline">When do you need this implemented?</label>
                             <select id="timeline" name="timeline" required>
                                 <option value="">Select timeline</option>
                                 <option value="immediate">Immediate (Within 30 days)</option>
@@ -394,154 +1195,91 @@
                                 <option value="planning">Future planning (6+ months)</option>
                             </select>
                         </div>
+                        
                         <div class="form-group">
-                            <label for="currentSetup">Current IT Setup</label>
-                            <select id="currentSetup" name="currentSetup">
-                                <option value="">Select current setup</option>
-                                <option value="internal-team">Internal IT team</option>
-                                <option value="external-provider">External IT provider</option>
-                                <option value="mixed">Mixed internal/external</option>
-                                <option value="minimal">Minimal IT support</option>
-                                <option value="none">No formal IT support</option>
-                            </select>
+                            <label for="message">Tell us about your IT challenges and goals</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="What IT challenges are you facing? What do you hope to achieve with XO managed services?"></textarea>
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="currentChallenges">Current IT Challenges</label>
-                        <div class="checkbox-simple">
-                            <label><input type="checkbox" name="challenges" value="system-reliability"> System reliability and uptime</label>
-                            <label><input type="checkbox" name="challenges" value="security"> Security and compliance</label>
-                            <label><input type="checkbox" name="challenges" value="scalability"> Scalability and growth support</label>
-                            <label><input type="checkbox" name="challenges" value="costs"> High IT costs and budget control</label>
-                            <label><input type="checkbox" name="challenges" value="expertise"> Lack of specialized expertise</label>
-                            <label><input type="checkbox" name="challenges" value="transparency"> Service transparency and communication</label>
-                        </div>
+                    <div class="form-navigation">
+                        <button type="button" class="nav-btn back-btn" id="prevStep">← BACK</button>
+                        <button type="submit" class="nav-btn submit-btn" id="submitForm">GET MY XO ASSESSMENT</button>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="message">Tell us about your specific needs and goals</label>
-                        <textarea id="message" name="message" rows="6" required placeholder="Describe your current IT environment, main challenges, and what you hope to achieve with XO managed services..."></textarea>
-                    </div>
-                </div>
-                
-                <div class="form-section">
-                    <h4>Preferred Contact Method</h4>
-                    <div class="radio-group">
-                        <label class="radio-item">
-                            <input type="radio" name="contactPreference" value="email" checked>
-                            <span class="radio-text">Email (Detailed proposals and documentation)</span>
-                        </label>
-                        <label class="radio-item">
-                            <input type="radio" name="contactPreference" value="phone">
-                            <span class="radio-text">Phone call (Quick discussion and Q&A)</span>
-                        </label>
-                        <label class="radio-item">
-                            <input type="radio" name="contactPreference" value="video">
-                            <span class="radio-text">Video call (Presentation and demonstration)</span>
-                        </label>
-                        <label class="radio-item">
-                            <input type="radio" name="contactPreference" value="meeting">
-                            <span class="radio-text">In-person meeting (London office visit)</span>
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="submit" class="submit-btn">GET MY XO ASSESSMENT</button>
                     <p class="form-note">
-                        By submitting this form, you agree to receive communications from XO Solutions about our managed IT services. We respect your privacy and never share your information.
+                        By submitting this form, you agree to receive communications from XO Solutions. We respect your privacy and never share your information.
                     </p>
                 </div>
             </form>
         </div>
     </section>
 
-    <!-- Contact Info & Response Times -->
-    <section class="contact-info-section">
-        <div class="info-container">
-            <div class="info-grid">
-                <div class="info-card animate-on-scroll">
+    <!-- Response Times -->
+    <section class="response-times">
+        <div class="times-container">
+            <div class="times-header animate-on-scroll">
+                <h2>WHAT TO EXPECT</h2>
+                <p>Clear timelines and professional service delivery you can count on.</p>
+            </div>
+            
+            <div class="times-grid">
+                <div class="time-card animate-on-scroll">
                     <h3>Response Times</h3>
-                    <div class="info-details">
-                        <div class="info-item">
-                            <span class="info-label">Enterprise Enquiries</span>
-                            <span class="info-value">Within 4 hours</span>
+                    <div class="time-details">
+                        <div class="time-item">
+                            <span class="time-label">Enterprise Enquiries</span>
+                            <span class="time-value">Within 4 hours</span>
                         </div>
-                        <div class="info-item">
-                            <span class="info-label">XO Client Support</span>
-                            <span class="info-value">Within 15 minutes</span>
+                        <div class="time-item">
+                            <span class="time-label">XO Client Support</span>
+                            <span class="time-value">Within 15 minutes</span>
                         </div>
-                        <div class="info-item">
-                            <span class="info-label">Emergency Issues</span>
-                            <span class="info-value">Immediate response</span>
+                        <div class="time-item">
+                            <span class="time-label">Emergency Issues</span>
+                            <span class="time-value">Immediate response</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="info-card animate-on-scroll" data-delay="200">
+                <div class="time-card animate-on-scroll">
                     <h3>Business Hours</h3>
-                    <div class="info-details">
-                        <div class="info-item">
-                            <span class="info-label">Sales & Consultation</span>
-                            <span class="info-value">Mon-Fri 9AM-6PM GMT</span>
+                    <div class="time-details">
+                        <div class="time-item">
+                            <span class="time-label">Sales & Consultation</span>
+                            <span class="time-value">Mon-Fri 9AM-6PM</span>
                         </div>
-                        <div class="info-item">
-                            <span class="info-label">XO Client Support</span>
-                            <span class="info-value">24/7 for all service tiers</span>
+                        <div class="time-item">
+                            <span class="time-label">XO Client Support</span>
+                            <span class="time-value">Available when needed</span>
                         </div>
-                        <div class="info-item">
-                            <span class="info-label">Emergency Response</span>
-                            <span class="info-value">24/7 availability</span>
+                        <div class="time-item">
+                            <span class="time-label">Emergency Response</span>
+                            <span class="time-value">Round-the-clock</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="info-card animate-on-scroll" data-delay="400">
-                    <h3>What to Expect</h3>
-                    <div class="info-details">
-                        <div class="info-item">
-                            <span class="info-label">Initial Response</span>
-                            <span class="info-value">Acknowledgment and next steps</span>
+                <div class="time-card animate-on-scroll">
+                    <h3>Process Overview</h3>
+                    <div class="time-details">
+                        <div class="time-item">
+                            <span class="time-label">Initial Response</span>
+                            <span class="time-value">Acknowledgment & next steps</span>
                         </div>
-                        <div class="info-item">
-                            <span class="info-label">Assessment</span>
-                            <span class="info-value">Detailed analysis and recommendations</span>
+                        <div class="time-item">
+                            <span class="time-label">Assessment</span>
+                            <span class="time-value">Detailed analysis & recommendations</span>
                         </div>
-                        <div class="info-item">
-                            <span class="info-label">Proposal</span>
-                            <span class="info-value">Transparent XO service tier proposal</span>
+                        <div class="time-item">
+                            <span class="time-label">Proposal</span>
+                            <span class="time-value">Transparent XO service proposal</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Live Chat Widget -->
-    <div class="chat-widget" id="chatWidget">
-        <div class="chat-toggle" id="chatToggle">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-        
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <h4>XO Solutions Support</h4>
-                <button class="chat-minimize" id="chatMinimize">−</button>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="chat-message bot">
-                    <p>Ready to get started with specialized managed IT services? I can help you understand our XO service tiers and answer questions about getting in touch!</p>
-                </div>
-            </div>
-            <div class="chat-input-container">
-                <input type="text" id="chatInput" placeholder="Ask about getting started...">
-                <button id="chatSend">Send</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -577,7 +1315,7 @@
                 <ul>
                     <li><a href="mailto:hello@xosolutions.co.uk">Enterprise Sales</a></li>
                     <li><a href="mailto:support@xosolutions.co.uk">Technical Support</a></li>
-                    <li>24/7 Service Desk</li>
+                    <li>Professional Service Desk</li>
                     <li>Emergency Response</li>
                 </ul>
             </div>
@@ -592,25 +1330,206 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script src="js/configurator.js"></script>
-    <script src="js/chat.js"></script>
-    <script src="js/animations.js"></script>
-    
     <script>
-        // Chat integration from hero and methods
-        document.getElementById('openChatFromHero')?.addEventListener('click', () => {
-            if (window.XOChat) {
-                window.XOChat.openChatWithMessage("I'm interested in getting started with XO Solutions managed IT services. Can you help me understand the process?");
+        // Multi-step form functionality
+        let currentStep = 1;
+        const totalSteps = 2;
+
+        // Step navigation
+        function showStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.form-step').forEach(stepEl => {
+                stepEl.classList.remove('active');
+            });
+            
+            // Show current step
+            document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+            
+            // Update progress indicator
+            document.querySelectorAll('.progress-step').forEach((stepEl, index) => {
+                if (index + 1 <= step) {
+                    stepEl.classList.add('active');
+                } else {
+                    stepEl.classList.remove('active');
+                }
+            });
+        }
+
+        // Validate current step
+        function validateStep(step) {
+            const stepElement = document.querySelector(`.form-step[data-step="${step}"]`);
+            const requiredFields = stepElement.querySelectorAll('input[required], select[required], textarea[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#ff0040';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#22c55e';
+                }
+            });
+
+            return isValid;
+        }
+
+        // Next step button
+        document.getElementById('nextStep').addEventListener('click', function() {
+            if (validateStep(currentStep)) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            } else {
+                // Show validation message
+                const errorMsg = document.createElement('div');
+                errorMsg.innerHTML = `
+                    <div style="background: #ff0040; color: white; padding: 0.8rem; border-radius: 4px; margin-top: 1rem; text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem;">
+                        Please fill in all required fields to continue
+                    </div>
+                `;
+                
+                // Remove existing error messages
+                const existingError = document.querySelector('.error-message');
+                if (existingError) existingError.remove();
+                
+                errorMsg.className = 'error-message';
+                this.parentNode.appendChild(errorMsg);
+                
+                setTimeout(() => {
+                    errorMsg.remove();
+                }, 3000);
             }
         });
+
+        // Previous step button
+        document.getElementById('prevStep').addEventListener('click', function() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateStep(currentStep)) {
+                return;
+            }
+            
+            const submitBtn = document.getElementById('submitForm');
+            const originalText = submitBtn.textContent;
+            
+            // Show loading state
+            submitBtn.textContent = 'SENDING REQUEST...';
+            submitBtn.style.background = '#f59e0b';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                submitBtn.textContent = 'REQUEST SENT ✓';
+                submitBtn.style.background = '#22c55e';
+                
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.innerHTML = `
+                    <div style="background: #22c55e; color: white; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; text-align: center; font-family: 'Space Mono', monospace;">
+                        <strong>Thank you!</strong><br>
+                        We'll contact you within 4 hours to discuss your XO assessment.
+                    </div>
+                `;
+                
+                // Hide form and show success
+                const formSteps = document.querySelectorAll('.form-step');
+                const progressBar = document.querySelector('.form-progress');
+                
+                formSteps.forEach(step => step.style.display = 'none');
+                progressBar.style.display = 'none';
+                
+                this.appendChild(successMessage);
+                
+                setTimeout(() => {
+                    // Reset form
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '#ff0040';
+                    submitBtn.disabled = false;
+                    successMessage.remove();
+                    this.reset();
+                    
+                    // Reset to step 1
+                    currentStep = 1;
+                    formSteps.forEach(step => step.style.display = '');
+                    progressBar.style.display = '';
+                    showStep(1);
+                }, 5000);
+            }, 1500);
+        });
+
+        // Real-time validation
+        const form = document.getElementById('contactForm');
+        const inputs = form.querySelectorAll('input, textarea, select');
         
-        document.getElementById('openChatFromMethods')?.addEventListener('click', () => {
-            if (window.XOChat) {
-                window.XOChat.openChatWithMessage("I'd like to learn more about XO service tiers. What's the best way to get started?");
-            }
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required')) {
+                    if (!this.value.trim()) {
+                        this.style.borderColor = '#ff0040';
+                    } else {
+                        this.style.borderColor = '#22c55e';
+                    }
+                }
+            });
+            
+            input.addEventListener('input', function() {
+                if (this.hasAttribute('required') && this.value.trim()) {
+                    this.style.borderColor = '#22c55e';
+                } else if (this.hasAttribute('required')) {
+                    this.style.borderColor = '#f5f5f5';
+                }
+            });
         });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Menu placeholder
+        document.querySelector('.nav-toggle')?.addEventListener('click', function() {
+            alert('Menu functionality would be implemented here');
+        });
+
+        // Initialize form
+        showStep(1);
     </script>
 </body>
 </html>
