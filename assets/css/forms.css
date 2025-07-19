@@ -1,0 +1,600 @@
+/* XO Solutions - Enhanced Form Styles */
+/* Modern form design for XO Assessment */
+
+/* Form Container */
+.contact-form {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+}
+
+/* Progress Indicator */
+.form-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.progress-step.active .step-number {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    color: var(--secondary);
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 0, 64, 0.3);
+}
+
+.progress-step.completed .step-number {
+    background: var(--primary);
+    color: var(--secondary);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f3f4f6;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.step-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-align: center;
+    max-width: 80px;
+}
+
+.progress-step.active .step-label {
+    color: var(--accent);
+}
+
+.progress-line {
+    width: 120px;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 0 1rem;
+    position: relative;
+    border-radius: 3px;
+    align-self: flex-start;
+    margin-top: 28px;
+}
+
+.progress-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    border-radius: 3px;
+    transition: width 0.6s ease;
+}
+
+.progress-step.completed ~ .progress-step .progress-line::before,
+.progress-step.active .progress-line::before {
+    width: 100%;
+}
+
+/* Form Steps */
+.form-step {
+    display: none;
+    animation: fadeInUp 0.6s ease;
+}
+
+.form-step.active {
+    display: block;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.form-header p {
+    font-size: 1rem;
+    color: #6b7280;
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Form Sections */
+.form-section {
+    margin-bottom: 1.5rem;
+}
+
+.form-section h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Form Inputs */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 0, 64, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.5;
+}
+
+/* Checkbox Grid */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.checkbox-grid label {
+    display: flex;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.checkbox-grid label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    transition: height 0.3s ease;
+}
+
+.checkbox-grid label:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-grid label:hover::before {
+    height: 100%;
+}
+
+.checkbox-grid input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    margin-top: 2px;
+    accent-color: var(--accent);
+    flex-shrink: 0;
+}
+
+.checkbox-grid span {
+    flex: 1;
+}
+
+.checkbox-grid strong {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.checkbox-grid small {
+    color: var(--gray);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Form Navigation */
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.nav-btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.nav-btn.next-btn,
+.nav-btn.submit-btn {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 0, 64, 0.2);
+}
+
+.nav-btn.back-btn {
+    background: #f3f4f6;
+    color: #6b7280;
+    border: 1px solid #d1d5db;
+}
+
+.nav-btn.next-btn:hover,
+.nav-btn.submit-btn:hover {
+    background: #e11d48;
+    box-shadow: 0 4px 12px rgba(255, 0, 64, 0.3);
+}
+
+.nav-btn.back-btn:hover {
+    background: #e5e7eb;
+    border-color: #9ca3af;
+}
+
+/* Form Note */
+.form-note {
+    font-size: 0.85rem;
+    color: var(--gray);
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.5;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Error Messages */
+.error-message {
+    animation: slideInDown 0.3s ease;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contact Methods */
+.contact-methods {
+    padding: 8rem 0;
+    background: linear-gradient(135deg, var(--secondary) 0%, #f8f9fa 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-methods::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(255, 0, 64, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.methods-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.methods-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.methods-header h2 {
+    font-family: 'Space Mono', monospace;
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+}
+
+.method-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.method-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.method-card:hover::before {
+    transform: scaleX(1);
+}
+
+.method-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+.method-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    color: var(--secondary);
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(255, 0, 64, 0.2);
+}
+
+.method-card:hover .method-icon {
+    transform: scale(1.1) rotateY(180deg);
+    box-shadow: 0 12px 35px rgba(255, 0, 64, 0.3);
+}
+
+.method-card h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.method-details {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.method-details strong {
+    font-family: 'Space Mono', monospace;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.method-action {
+    font-family: 'Space Mono', monospace;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    color: var(--secondary);
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 0, 64, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.method-action::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.method-action:hover::before {
+    left: 100%;
+}
+
+.method-action:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 0, 64, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 2rem;
+        margin: 1rem;
+        border-radius: 20px;
+    }
+    
+    .form-progress {
+        margin-bottom: 2rem;
+        padding: 1rem 0;
+    }
+    
+    .progress-line {
+        width: 80px;
+        margin: 0 0.5rem;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .step-label {
+        font-size: 0.75rem;
+        max-width: 80px;
+    }
+    
+    .form-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-navigation {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        padding: 1.25rem 2rem;
+    }
+    
+    .methods-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .method-card {
+        padding: 2rem;
+    }
+}

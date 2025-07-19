@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XO Solutions - Specialized Managed IT Services for London</title>
-    <meta name="description" content="XO Solutions delivers specialized managed IT services for London's financial services and hospitality sectors. 24/7 monitoring, expert support, and transparent pricing.">
+    <meta name="description" content="XO Solutions delivers specialized managed IT services for London's financial services and hospitality sectors. Expert UK-based support, proactive monitoring, and transparent pricing.">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/main.css">
@@ -14,20 +14,22 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
-    <!-- Top Navigation -->
-    <nav class="top-nav">
-        <div class="top-nav-content">
-            <a href="#" class="logo">
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
                 <div class="logo-box">XO</div>
                 <div class="logo-text">SOLUTIONS</div>
             </a>
             
-            <div class="nav-links">
-                <a href="#services" class="nav-link">Our Services</a>
-                <a href="#about" class="nav-link">Get Started</a>
+            <div class="quick-access">
+                <a href="services.html" class="quick-link">Services</a>
+                <a href="pricing.html" class="quick-link">Compare</a>
+                <a href="about.html" class="quick-link">About</a>
+                <a href="contact.html" class="quick-link">Contact</a>
             </div>
             
-            <button class="menu-btn" id="menuToggle">MENU</button>
+            <button class="nav-toggle" id="menuToggle">MENU</button>
         </div>
     </nav>
 
@@ -51,10 +53,11 @@
         
         <div class="menu-section">
             <h3>XO Services</h3>
-            <a href="services/xo-specialist.html" class="menu-item">XO Specialist - Back Office Support</a>
-            <a href="services/xo-complete.html" class="menu-item">XO Complete - Full Front Office</a>
-            <a href="services/xo-ultimate.html" class="menu-item">XO Ultimate - Complete IT Ecosystem</a>
-            <a href="services/xo-assist.html" class="menu-item">XO Assist - Specialist Team Support</a>
+            <a href="pricing.html" class="menu-item">Compare All Services</a>
+            <a href="services/core/xo-specialist.html" class="menu-item">XO Specialist - Back Office Support</a>
+            <a href="services/core/xo-complete.html" class="menu-item">XO Complete - Full Front Office</a>
+            <a href="services/core/xo-ultimate.html" class="menu-item">XO Ultimate - Complete IT Ecosystem</a>
+            <a href="services/core/xo-assist.html" class="menu-item">XO Assist - Specialist Team Support</a>
         </div>
         
         <div class="menu-section">
@@ -79,33 +82,33 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="hero section">
+    <section class="hero section" data-parallax="0.2">
         <div class="hero-content">
             <div class="hero-main">
                 <h1 class="animate-on-scroll">
                     XO<br>
                     SOLUTIONS
                 </h1>
-                <p class="hero-subtitle animate-on-scroll">
-                    Specialized managed IT services for London's financial services and hospitality sectors. Transparent service delivery, expert UK-based support, and 24/7 monitoring that keeps your business running smoothly.
+                <p class="hero-subtitle animate-on-scroll text-reveal">
+                    London's premier managed IT services for financial and hospitality sectors. Our UK-based experts deliver transparent, reliable technology solutions that drive business growth.
                 </p>
                 <div class="hero-actions animate-on-scroll">
-                    <a href="contact.html" class="btn btn-primary">REQUEST ASSESSMENT</a>
-                    <button class="btn btn-secondary" onclick="document.getElementById('menuToggle').click()">EXPLORE SERVICES</button>
+                    <a href="contact.html" class="hero-cta">REQUEST ASSESSMENT</a>
+                    <button class="secondary-cta" onclick="document.getElementById('menuToggle').click()">EXPLORE SERVICES</button>
                 </div>
                 
                 <div class="hero-features animate-on-scroll">
                     <div class="feature-item">
-                        <h4>Specialized Expertise</h4>
-                        <p>Deep knowledge in financial services and hospitality sectors</p>
+                        <h4>Industry-Leading Expertise</h4>
+                        <p>Certified specialists in Geneva SS&C and Agilysys platforms with proven London market experience</p>
                     </div>
                     <div class="feature-item">
-                        <h4>UK-Based Teams</h4>
-                        <p>Expert support and cultural alignment from London</p>
+                        <h4>London-Based Excellence</h4>
+                        <p>Same-timezone support with deep understanding of UK business culture and compliance</p>
                     </div>
                     <div class="feature-item">
-                        <h4>Transparent Delivery</h4>
-                        <p>Clear service delivery with no hidden charges</p>
+                        <h4>Predictable Investment</h4>
+                        <p>Fixed monthly costs with reliable performance monitoring and no surprise charges</p>
                     </div>
                 </div>
             </div>
@@ -122,33 +125,36 @@
     <section class="services-preview section" id="services">
         <div class="services-container">
             <div class="services-header animate-on-scroll">
-                <h2>SPECIALIZED MANAGED IT SERVICES</h2>
-                <p>Four comprehensive service tiers designed for London businesses with transparent delivery and complete IT ecosystem support.</p>
+                <h2>CHOOSE YOUR XO SERVICE TIER</h2>
+                <p>Four specialized service levels tailored to London's financial and hospitality sectors. Each tier delivers measurable business value with transparent pricing and expert UK-based support.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="pricing.html" class="hero-cta" style="display: inline-block;">Compare Services & Pricing</a>
+                </div>
             </div>
             
             <div class="services-grid">
                 <div class="service-card animate-on-scroll">
                     <h3>XO Specialist</h3>
-                    <p>Back office support for systems and servers with expert hosting and infrastructure management.</p>
-                    <a href="services/xo-specialist.html" class="service-link">Learn More →</a>
+                    <p>Expert back-office management with specialized platform expertise. Perfect for businesses needing reliable infrastructure without full IT team costs.</p>
+                    <a href="services/core/xo-specialist.html" class="service-link">Explore Specialist →</a>
                 </div>
                 
                 <div class="service-card animate-on-scroll">
                     <h3>XO Complete</h3>
-                    <p>Full front office support providing A to Z client support with complete end-user IT management.</p>
-                    <a href="services/xo-complete.html" class="service-link">Learn More →</a>
+                    <p>Comprehensive front-office support covering all end-user needs. Complete helpdesk, remote support, and user management in one package.</p>
+                    <a href="services/core/xo-complete.html" class="service-link">Explore Complete →</a>
                 </div>
                 
                 <div class="service-card animate-on-scroll">
                     <h3>XO Ultimate</h3>
-                    <p>Front AND back office support at exceptional value - both services combined for complete ecosystem management.</p>
-                    <a href="services/xo-ultimate.html" class="service-link">Learn More →</a>
+                    <p>Our most popular choice combines front and back-office services at exceptional value. Complete IT ecosystem management for growing businesses.</p>
+                    <a href="services/core/xo-ultimate.html" class="service-link">Explore Ultimate →</a>
                 </div>
                 
                 <div class="service-card animate-on-scroll">
                     <h3>XO Assist</h3>
-                    <p>Specialized IT team assistance and expert consultation with dedicated specialist allocation.</p>
-                    <a href="services/xo-assist.html" class="service-link">Learn More →</a>
+                    <p>Strategic IT consultation and specialist team augmentation. Ideal for businesses needing expert guidance without full managed services commitment.</p>
+                    <a href="services/core/xo-assist.html" class="service-link">Explore Assist →</a>
                 </div>
             </div>
         </div>
@@ -158,33 +164,33 @@
     <section class="about-preview section" id="about">
         <div class="about-container">
             <div class="about-content animate-on-scroll">
-                <h2>LONDON'S LEADING MANAGED IT SPECIALISTS</h2>
+                <h2>PROVEN EXPERTISE, TRANSPARENT DELIVERY</h2>
                 <p>
-                    XO Solutions delivers specialized managed IT services with a fresh perspective on technology support. We combine cutting-edge solutions with deep industry expertise to transform how London businesses operate.
+                    Founded by London IT veterans with deep expertise in financial services and hospitality technology. We understand the unique challenges of managing complex systems in fast-paced, high-stakes environments.
                 </p>
                 <p>
-                    Our transparent service delivery, UK-based teams, and proven track record managing complex systems across London's premier venues means your technology infrastructure is in expert hands.
+                    Our commitment to transparency means predictable costs, clear service levels, and honest communication. No hidden charges, no surprise bills, just reliable IT that drives business growth.
                 </p>
                 
-                <a href="about.html" class="btn btn-secondary">Learn More About XO →</a>
+                <a href="about.html" class="btn btn-secondary">Discover Our Story →</a>
             </div>
             
             <div class="about-highlights animate-on-scroll">
                 <div class="about-highlight">
-                    <h4>Specialized Focus</h4>
-                    <p>Financial Services & Hospitality</p>
+                    <h4>Industry Focus</h4>
+                    <p>Financial Services & Premium Hospitality</p>
                 </div>
                 <div class="about-highlight">
-                    <h4>Expert Teams</h4>
-                    <p>UK-Based Support</p>
+                    <h4>Service Commitment</h4>
+                    <p>Proactive Monitoring</p>
                 </div>
                 <div class="about-highlight">
-                    <h4>Founded</h4>
-                    <p>2025</p>
+                    <h4>Support Model</h4>
+                    <p>UK-Based Teams Only</p>
                 </div>
                 <div class="about-highlight">
-                    <h4>Location</h4>
-                    <p>London Based</p>
+                    <h4>Response Time</h4>
+                    <p>Under 15 Minutes</p>
                 </div>
             </div>
         </div>
@@ -198,7 +204,7 @@
                 Ready to experience specialized managed IT services? Let's discuss how XO Solutions can transform your technology operations with transparent delivery and expert support.
             </p>
             <div class="animate-on-scroll">
-                <a href="contact.html" class="btn btn-primary">GET YOUR XO ASSESSMENT</a>
+                <a href="contact.html" class="hero-cta">GET YOUR XO ASSESSMENT</a>
             </div>
         </div>
     </section>

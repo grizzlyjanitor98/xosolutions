@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/layout.css">
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/navigation.css">
+    <link rel="stylesheet" href="assets/css/forms.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body data-page="contact">
@@ -22,12 +23,53 @@
             
             <div class="quick-access">
                 <a href="services.html" class="quick-link">Services</a>
+                <a href="pricing.html" class="quick-link">Compare</a>
                 <a href="about.html" class="quick-link">About</a>
             </div>
             
-            <button class="nav-toggle">MENU</button>
+            <button class="nav-toggle" id="menuToggle">MENU</button>
         </div>
     </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Black Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-header">
+            <div class="sidebar-title">MANAGED IT SERVICES</div>
+            <button class="close-btn" id="closeMenu">&times;</button>
+        </div>
+        
+        <div class="menu-section">
+            <h3>XO Services</h3>
+            <a href="pricing.html" class="menu-item">Compare All Services</a>
+            <a href="services/core/xo-specialist.html" class="menu-item">XO Specialist - Back Office Support</a>
+            <a href="services/core/xo-complete.html" class="menu-item">XO Complete - Full Front Office</a>
+            <a href="services/core/xo-ultimate.html" class="menu-item">XO Ultimate - Complete IT Ecosystem</a>
+            <a href="services/core/xo-assist.html" class="menu-item">XO Assist - Specialist Team Support</a>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Industries</h3>
+            <a href="sectors/financial-services.html" class="menu-item">Financial Services</a>
+            <a href="sectors/hospitality.html" class="menu-item">Hospitality</a>
+            <a href="sectors/professional-services.html" class="menu-item">Professional Services</a>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Company</h3>
+            <a href="about.html" class="menu-item">About XO Solutions</a>
+            <a href="services.html" class="menu-item">All Services</a>
+            <a href="contact.html" class="menu-item">Contact Us</a>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Support</h3>
+            <a href="mailto:hello@xosolutions.co.uk" class="menu-item">Enterprise Sales</a>
+            <a href="mailto:support@xosolutions.co.uk" class="menu-item">Technical Support</a>
+        </div>
+    </div>
 
     <!-- Breadcrumbs -->
     <div class="breadcrumbs">
@@ -49,29 +91,29 @@
                     TRANSFORMATION
                 </h1>
                 <p class="contact-hero-subtitle">
-                    Ready to experience specialized managed IT services for your London business? Our experts will help you choose the right XO service tier and create a tailored implementation plan.
+                    Transform your IT operations with London's most transparent managed service provider. Get honest pricing, clear service levels, and genuine sector expertise\u2014starting with a free assessment.
                 </p>
                 
                 <div class="contact-highlights">
                     <div class="highlight-item">
                         <div class="highlight-icon">FREE</div>
                         <div class="highlight-content">
-                            <h4>Comprehensive Assessment</h4>
-                            <p>Complete IT evaluation and XO service recommendations</p>
+                            <h4>No-Obligation Assessment</h4>
+                            <p>Complete IT audit with honest recommendations, not sales pressure</p>
                         </div>
                     </div>
                     <div class="highlight-item">
                         <div class="highlight-icon">4HR</div>
                         <div class="highlight-content">
-                            <h4>Quick Response</h4>
-                            <p>We respond to enterprise enquiries within 4 hours</p>
+                            <h4>Same-Day Response</h4>
+                            <p>London-based team responds to serious enquiries within 4 hours</p>
                         </div>
                     </div>
                     <div class="highlight-item">
                         <div class="highlight-icon">XO</div>
                         <div class="highlight-content">
-                            <h4>Custom Solutions</h4>
-                            <p>XO service packages designed for your specific needs</p>
+                            <h4>Transparent Pricing</h4>
+                            <p>Fixed monthly costs with no hidden charges or surprise bills</p>
                         </div>
                     </div>
                 </div>
@@ -158,15 +200,15 @@
             <div class="contact-info animate-on-scroll">
                 <h2>GET YOUR XO ASSESSMENT</h2>
                 <p>
-                    Tell us about your business in just two quick steps. Our specialists will provide personalized XO service recommendations and implementation guidance.
+                    Tell us about your business in three quick steps. Our specialists will provide personalized XO service recommendations and implementation guidance.
                 </p>
                 
                 <div class="contact-benefits">
                     <div class="benefit-item">
                         <div class="benefit-icon">✓</div>
                         <div class="benefit-content">
-                            <h4>Quick 2-Step Process</h4>
-                            <p>Simple form that takes less than 3 minutes to complete</p>
+                            <h4>Quick 3-Step Process</h4>
+                            <p>Simple form that takes less than 5 minutes to complete</p>
                         </div>
                     </div>
                     <div class="benefit-item">
@@ -191,24 +233,29 @@
                 <div class="form-progress">
                     <div class="progress-step active" data-step="1">
                         <div class="step-number">1</div>
-                        <div class="step-label">Contact Info</div>
+                        <div class="step-label">About You</div>
                     </div>
                     <div class="progress-line"></div>
                     <div class="progress-step" data-step="2">
                         <div class="step-number">2</div>
-                        <div class="step-label">Project Details</div>
+                        <div class="step-label">Your Needs</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Let's Connect</div>
                     </div>
                 </div>
                 
-                <!-- Step 1: Contact & Company Info -->
+                <!-- Step 1: About You -->
                 <div class="form-step active" data-step="1">
                     <div class="form-header">
-                        <h3>Let's Get Started</h3>
-                        <p>Tell us about you and your company</p>
+                        <h3>Tell Us About You</h3>
+                        <p>Basic information to get started</p>
                     </div>
                     
                     <div class="form-section">
-                        <h4>Contact Information</h4>
+                        <h4>Contact Details</h4>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name</label>
@@ -226,23 +273,15 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="phone">Phone Number (Optional)</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                    </div>
-                    
-                    <div class="form-section">
-                        <h4>Company Information</h4>
-                        <div class="form-group">
                             <label for="company">Company Name</label>
                             <input type="text" id="company" name="company" required>
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="industry">Industry Sector</label>
+                                <label for="industry">Industry</label>
                                 <select id="industry" name="industry" required>
-                                    <option value="">Select sector</option>
+                                    <option value="">Select your industry</option>
                                     <option value="financial-services">Financial Services</option>
                                     <option value="hospitality">Hospitality</option>
                                     <option value="professional-services">Professional Services</option>
@@ -252,61 +291,62 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="employees">Company Size</label>
+                                <label for="employees">Team Size</label>
                                 <select id="employees" name="employees" required>
-                                    <option value="">Select size</option>
-                                    <option value="1-25">1-25 employees</option>
-                                    <option value="26-100">26-100 employees</option>
-                                    <option value="101-500">101-500 employees</option>
-                                    <option value="500+">500+ employees</option>
+                                    <option value="">Select team size</option>
+                                    <option value="1-10">1-10 employees</option>
+                                    <option value="11-50">11-50 employees</option>
+                                    <option value="51-200">51-200 employees</option>
+                                    <option value="200+">200+ employees</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     
                     <div class="form-navigation">
-                        <button type="button" class="nav-btn next-btn" id="nextStep">NEXT: PROJECT DETAILS →</button>
+                        <div></div>
+                        <button type="button" class="nav-btn next-btn" id="nextStep">NEXT: YOUR NEEDS →</button>
                     </div>
                 </div>
                 
-                <!-- Step 2: Project Details -->
+                <!-- Step 2: Your Needs -->
                 <div class="form-step" data-step="2">
                     <div class="form-header">
-                        <h3>Project Requirements</h3>
-                        <p>Help us understand your IT needs</p>
+                        <h3>What Do You Need?</h3>
+                        <p>Select the XO services that interest you</p>
                     </div>
                     
                     <div class="form-section">
-                        <h4>XO Service Interest</h4>
+                        <h4>XO Services</h4>
                         <div class="form-group">
-                            <label>Which XO services interest you? (Select all that apply)</label>
+                            <label>Which XO services are you interested in?</label>
                             <div class="checkbox-grid">
                                 <label>
                                     <input type="checkbox" name="services" value="xo-specialist">
                                     <span>
                                         <strong>XO Specialist</strong><br>
-                                        <small>Back office systems & servers</small>
+                                        <small>Back office systems & server management</small>
                                     </span>
                                 </label>
                                 <label>
                                     <input type="checkbox" name="services" value="xo-complete">
                                     <span>
                                         <strong>XO Complete</strong><br>
-                                        <small>Full front office support</small>
+                                        <small>Complete front office support</small>
                                     </span>
                                 </label>
                                 <label>
                                     <input type="checkbox" name="services" value="xo-ultimate">
                                     <span>
                                         <strong>XO Ultimate</strong><br>
-                                        <small>Complete IT ecosystem</small>
+                                        <small>Full IT ecosystem management</small>
                                     </span>
                                 </label>
                                 <label>
                                     <input type="checkbox" name="services" value="xo-assist">
                                     <span>
                                         <strong>XO Assist</strong><br>
-                                        <small>Specialist team assistance</small>
+                                        <small>Expert consultation & planning</small>
                                     </span>
                                 </label>
                             </div>
@@ -314,26 +354,82 @@
                     </div>
                     
                     <div class="form-section">
-                        <h4>Timeline & Requirements</h4>
+                        <h4>Current Situation</h4>
                         <div class="form-group">
-                            <label for="timeline">When do you need this implemented?</label>
-                            <select id="timeline" name="timeline" required>
-                                <option value="">Select timeline</option>
-                                <option value="immediate">Immediate (Within 30 days)</option>
-                                <option value="quarter">This Quarter (1-3 months)</option>
-                                <option value="half-year">Next 6 months</option>
-                                <option value="planning">Future planning (6+ months)</option>
+                            <label for="current-setup">What's your current IT setup?</label>
+                            <select id="current-setup" name="current-setup" required>
+                                <option value="">Select current situation</option>
+                                <option value="in-house-team">In-house IT team</option>
+                                <option value="outsourced">Outsourced to another provider</option>
+                                <option value="mixed">Mix of in-house and outsourced</option>
+                                <option value="minimal">Minimal IT support</option>
+                                <option value="none">No formal IT support</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Tell us about your IT challenges and goals</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="What IT challenges are you facing? What do you hope to achieve with XO managed services?"></textarea>
+                            <label for="budget-range">Approximate monthly IT budget</label>
+                            <select id="budget-range" name="budget-range" required>
+                                <option value="">Select budget range</option>
+                                <option value="under-5k">Under £5,000</option>
+                                <option value="5k-15k">£5,000 - £15,000</option>
+                                <option value="15k-30k">£15,000 - £30,000</option>
+                                <option value="30k-plus">£30,000+</option>
+                                <option value="discuss">Prefer to discuss</option>
+                            </select>
                         </div>
                     </div>
                     
                     <div class="form-navigation">
                         <button type="button" class="nav-btn back-btn" id="prevStep">← BACK</button>
+                        <button type="button" class="nav-btn next-btn" id="nextStep2">NEXT: LET'S CONNECT →</button>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Let's Connect -->
+                <div class="form-step" data-step="3">
+                    <div class="form-header">
+                        <h3>Let's Connect</h3>
+                        <p>Tell us about your timeline and goals</p>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h4>Timeline & Goals</h4>
+                        <div class="form-group">
+                            <label for="timeline">When would you like to get started?</label>
+                            <select id="timeline" name="timeline" required>
+                                <option value="">Select timeline</option>
+                                <option value="asap">As soon as possible</option>
+                                <option value="month">Within the next month</option>
+                                <option value="quarter">Next 3 months</option>
+                                <option value="planning">Currently planning (6+ months)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">What are your main IT challenges or goals?</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Describe your current IT challenges, goals, or what you'd like to achieve with XO managed services..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number (Optional)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="For faster response">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="preferred-contact">Preferred contact method</label>
+                            <select id="preferred-contact" name="preferred-contact">
+                                <option value="">Select preference</option>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone call</option>
+                                <option value="video">Video call</option>
+                                <option value="either">No preference</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="nav-btn back-btn" id="prevStep2">← BACK</button>
                         <button type="submit" class="nav-btn submit-btn" id="submitForm">GET MY XO ASSESSMENT</button>
                     </div>
                     
@@ -463,7 +559,7 @@
     <script>
         // Multi-step form functionality
         let currentStep = 1;
-        const totalSteps = 2;
+        const totalSteps = 3;
 
         // Step navigation
         function showStep(step) {
@@ -477,10 +573,14 @@
             
             // Update progress indicator
             document.querySelectorAll('.progress-step').forEach((stepEl, index) => {
-                if (index + 1 <= step) {
-                    stepEl.classList.add('active');
-                } else {
+                if (index + 1 < step) {
+                    stepEl.classList.add('completed');
                     stepEl.classList.remove('active');
+                } else if (index + 1 === step) {
+                    stepEl.classList.add('active');
+                    stepEl.classList.remove('completed');
+                } else {
+                    stepEl.classList.remove('active', 'completed');
                 }
             });
         }
@@ -532,8 +632,45 @@
             }
         });
 
-        // Previous step button
+        // Second next step button (step 2 to 3)
+        document.getElementById('nextStep2').addEventListener('click', function() {
+            if (validateStep(currentStep)) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            } else {
+                // Show validation message
+                const errorMsg = document.createElement('div');
+                errorMsg.innerHTML = `
+                    <div style="background: #ff0040; color: white; padding: 0.8rem; border-radius: 4px; margin-top: 1rem; text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem;">
+                        Please fill in all required fields to continue
+                    </div>
+                `;
+                
+                // Remove existing error messages
+                const existingError = document.querySelector('.error-message');
+                if (existingError) existingError.remove();
+                
+                errorMsg.className = 'error-message';
+                this.parentNode.appendChild(errorMsg);
+                
+                setTimeout(() => {
+                    errorMsg.remove();
+                }, 3000);
+            }
+        });
+
+        // Previous step button (step 2 to 1)
         document.getElementById('prevStep').addEventListener('click', function() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        // Second previous step button (step 3 to 2)
+        document.getElementById('prevStep2').addEventListener('click', function() {
             if (currentStep > 1) {
                 currentStep--;
                 showStep(currentStep);

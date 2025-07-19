@@ -1,8 +1,8 @@
 /* XO Solutions - Navigation Styles */
 /* Top navigation, sidebar menu, and navigation components */
 
-/* Top Navigation */
-.top-nav {
+/* Navigation */
+.nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -14,7 +14,7 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.top-nav-content {
+.nav-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,14 +49,14 @@
     font-weight: 700;
 }
 
-/* Navigation Links */
-.nav-links {
+/* Quick Access Navigation */
+.quick-access {
     display: flex;
     gap: 2rem;
     align-items: center;
 }
 
-.nav-link {
+.quick-link {
     font-family: 'Space Mono', monospace;
     font-size: 0.8rem;
     color: var(--primary);
@@ -67,12 +67,12 @@
     transition: all 0.3s ease;
 }
 
-.nav-link:hover {
+.quick-link:hover {
     color: var(--accent);
 }
 
-/* Menu Button */
-.menu-btn {
+/* Navigation Toggle Button */
+.nav-toggle {
     font-family: 'Space Mono', monospace;
     background: none;
     border: 2px solid var(--primary);
@@ -82,9 +82,10 @@
     letter-spacing: 1px;
     transition: all 0.3s ease;
     cursor: pointer;
+    color: var(--primary);
 }
 
-.menu-btn:hover {
+.nav-toggle:hover {
     background: var(--primary);
     color: var(--secondary);
 }

@@ -5,71 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About XO Solutions - Specialized Managed IT Services</title>
     <meta name="description" content="Learn about XO Solutions' mission to deliver specialized managed IT services for London's financial services and hospitality sectors with transparent pricing and expert support.">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/navigation.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body data-page="about">
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-progress"></div>
-    </div>
-
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-content">
             <a href="index.html" class="logo">
-                <svg width="56" height="56" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
-                    <defs>
-                        <style>
-                            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Space+Mono:wght@700&display=swap');
-                        </style>
-                    </defs>
-                    <rect x="20" y="20" width="460" height="460" fill="none" stroke="currentColor" stroke-width="20"/>
-                    <line x1="30" y1="250" x2="470" y2="250" stroke="currentColor" stroke-width="20"/>
-                    <text x="250" y="135" font-family="Space Mono, monospace" font-weight="700" font-size="200" text-anchor="middle" dominant-baseline="middle" fill="currentColor">XO</text>
-                    <text x="250" y="365" font-family="Inter, sans-serif" font-weight="700" font-size="70" text-anchor="middle" dominant-baseline="middle" fill="currentColor">SOLUTIONS</text>
-                </svg>
+                <div class="logo-box">XO</div>
+                <div class="logo-text">SOLUTIONS</div>
             </a>
             
             <div class="quick-access">
-                <a href="services.html" class="quick-link">All Services</a>
+                <a href="services.html" class="quick-link">Services</a>
+                <a href="pricing.html" class="quick-link">Compare</a>
                 <a href="contact.html" class="quick-link">Contact</a>
             </div>
             
-            <button class="nav-toggle">MENU</button>
-        </div>
-        
-        <div class="nav-menu">
-            <button class="nav-close">CLOSE</button>
-            
-            <div class="mega-menu">
-                <div class="menu-section">
-                    <h3>Managed IT Services</h3>
-                    <a href="services/xo-specialist.html">XO Specialist</a>
-                    <a href="services/xo-complete.html">XO Complete</a>
-                    <a href="services/xo-ultimate.html">XO Ultimate</a>
-                    <a href="services/xo-assist.html">XO Assist</a>
-                </div>
-                
-                <div class="menu-section">
-                    <h3>Industry Focus</h3>
-                    <a href="sectors/financial-services.html">Financial Services</a>
-                    <a href="sectors/hospitality.html">Hospitality</a>
-                    <a href="sectors/professional-services.html">Professional Services</a>
-                </div>
-                
-                <div class="menu-section">
-                    <h3>Company</h3>
-                    <a href="about.html">About</a>
-                    <a href="services.html">All Services</a>
-                    <a href="sectors.html">Sectors</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </div>
+            <button class="nav-toggle" id="menuToggle">MENU</button>
         </div>
     </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Black Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-header">
+            <div class="sidebar-title">MANAGED IT SERVICES</div>
+            <button class="close-btn" id="closeMenu">&times;</button>
+        </div>
+        
+        <div class="menu-section">
+            <h3>XO Services</h3>
+            <a href="pricing.html" class="menu-item">Compare All Services</a>
+            <a href="services/core/xo-specialist.html" class="menu-item">XO Specialist - Back Office Support</a>
+            <a href="services/core/xo-complete.html" class="menu-item">XO Complete - Full Front Office</a>
+            <a href="services/core/xo-ultimate.html" class="menu-item">XO Ultimate - Complete IT Ecosystem</a>
+            <a href="services/core/xo-assist.html" class="menu-item">XO Assist - Specialist Team Support</a>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Industries</h3>
+            <a href="sectors/financial-services.html" class="menu-item">Financial Services</a>
+            <a href="sectors/hospitality.html" class="menu-item">Hospitality</a>
+            <a href="sectors/professional-services.html" class="menu-item">Professional Services</a>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Company</h3>
+            <a href="about.html" class="menu-item">About XO Solutions</a>
+            <a href="services.html" class="menu-item">All Services</a>
+            <a href="contact.html" class="menu-item">Contact Us</a>
+        </div>
+        
+        <div class="menu-section">
+            <h3>Support</h3>
+            <a href="mailto:hello@xosolutions.co.uk" class="menu-item">Enterprise Sales</a>
+            <a href="mailto:support@xosolutions.co.uk" class="menu-item">Technical Support</a>
+        </div>
+    </div>
 
     <!-- Breadcrumbs -->
     <div class="breadcrumbs">
@@ -91,7 +91,7 @@
                     MANAGED IT SERVICES
                 </h1>
                 <p class="about-hero-subtitle">
-                    XO Solutions is setting the new standard for managed IT services in London. We specialize in serving financial services and hospitality sectors with transparent pricing, expert UK-based support, and deep technical expertise.
+                    Born from the need for genuine transparency in London's IT services market. We're redefining managed IT with honest pricing, measurable results, and deep sector expertise that drives real business outcomes.
                 </p>
                 <div class="about-hero-stats">
                     <div class="hero-stat">
@@ -99,8 +99,8 @@
                         <span class="stat-label">XO Service Tiers</span>
                     </div>
                     <div class="hero-stat">
-                        <span class="stat-number" data-counter="99.9">0</span>
-                        <span class="stat-label">% Uptime SLA</span>
+                        <span class="stat-number" data-counter="15">0</span>
+                        <span class="stat-label">Min Response</span>
                     </div>
                     <div class="hero-stat">
                         <span class="stat-number" data-counter="24">0</span>
@@ -139,7 +139,7 @@
                         </svg>
                     </div>
                     <h3>Our Mission</h3>
-                    <p>To become London's leading specialized managed IT services provider, setting the standard for transparent pricing and expert support in financial services and hospitality sectors.</p>
+                    <p>Transform how London businesses experience managed IT services through radical transparency, measurable outcomes, and genuine sector expertise that drives competitive advantage.</p>
                 </div>
                 
                 <div class="vision-card animate-on-scroll" data-delay="200">
@@ -150,7 +150,7 @@
                         </svg>
                     </div>
                     <h3>Our Vision</h3>
-                    <p>To establish ourselves as the premier technology partner for London businesses, delivering operational excellence through heavy investment in market leadership and specialized expertise.</p>
+                    <p>Become the trusted technology foundation for London's most successful financial and hospitality businesses, known for delivering results that directly impact bottom-line growth.</p>
                 </div>
                 
                 <div class="values-card animate-on-scroll" data-delay="400">
@@ -161,7 +161,7 @@
                         </svg>
                     </div>
                     <h3>Our Values</h3>
-                    <p>Transparent service delivery, operational excellence, specialized expertise, and customer success drive everything we do. We're committed to delivering exceptional value in every interaction.</p>
+                    <p>Honest communication over sales speak. Proven results over marketing promises. UK-based excellence over offshore economics. Your success over our convenience.</p>
                 </div>
             </div>
         </div>
@@ -174,28 +174,28 @@
                 <h2>THE XO STORY</h2>
                 <div class="story-text">
                     <p>
-                        XO Solutions was founded on the belief that London's financial services and hospitality sectors deserve specialized managed IT services that truly understand their unique challenges and requirements.
+                        Founded by London IT veterans frustrated with the industry's opacity and generic approaches. After years managing complex financial and hospitality systems, we knew there had to be a better way.
                     </p>
                     <p>
-                        We recognized that traditional one-size-fits-all managed service providers couldn't deliver the specialized expertise these sectors demand. Our fresh perspective allows us to focus intensively on what we do best - delivering exceptional IT services with transparent pricing and deep industry knowledge.
+                        We built XO Solutions on three principles: honest pricing (no hidden costs), sector expertise (not generic solutions), and UK-based excellence (no offshore shortcuts). Every decision we make serves these principles.
                     </p>
                     <p>
-                        Today, XO Solutions represents the evolution of managed IT services - more specialized, more transparent, and more aligned with the way London's leading businesses actually operate. We're not just another MSP; we're your specialized technology partner.
+                        Today, we're proving that specialized, transparent managed IT services aren't just possible—they're the new standard for businesses that demand both quality and accountability from their technology partners.
                     </p>
                 </div>
                 
                 <div class="story-highlights">
                     <div class="highlight-item">
-                        <h4>Launched in 2025</h4>
-                        <p>Started with a vision to specialize in London's key sectors</p>
+                        <h4>Industry Veterans</h4>
+                        <p>Founded by experienced London IT professionals who understand enterprise requirements</p>
                     </div>
                     <div class="highlight-item">
-                        <h4>4 XO Service Tiers</h4>
-                        <p>Comprehensive portfolio from back office to complete ecosystems</p>
+                        <h4>Transparent Approach</h4>
+                        <p>Fixed monthly costs, honest communication, and guaranteed service levels</p>
                     </div>
                     <div class="highlight-item">
-                        <h4>Sector Specialization</h4>
-                        <p>Deep expertise in financial services and hospitality</p>
+                        <h4>Proven Platforms</h4>
+                        <p>Certified expertise in Geneva SS&C, Agilysys, and London's leading business systems</p>
                     </div>
                 </div>
             </div>
@@ -430,7 +430,7 @@
                     <div class="tech-category">
                         <h3>Monitoring & Management</h3>
                         <div class="tech-items">
-                            <span class="tech-item">24/7 System Monitoring</span>
+                            <span class="tech-item">Proactive System Monitoring</span>
                             <span class="tech-item">Proactive Maintenance</span>
                             <span class="tech-item">Performance Optimization</span>
                             <span class="tech-item">Comprehensive Reporting</span>
@@ -506,20 +506,20 @@
             <div class="commitments-grid">
                 <div class="commitment-item animate-on-scroll" data-delay="100">
                     <div class="commitment-badge">
-                        <span class="badge-text">99.9%</span>
-                        <span class="badge-label">UPTIME SLA</span>
+                        <span class="badge-text">UK</span>
+                        <span class="badge-label">BASED TEAMS</span>
                     </div>
-                    <h3>Service Reliability</h3>
-                    <p>We guarantee 99.9% uptime across all XO service tiers with transparent reporting and accountability for any service disruptions.</p>
+                    <h3>Service Excellence</h3>
+                    <p>All technical support provided by UK-based engineers with deep knowledge of London business requirements and cultural understanding.</p>
                 </div>
                 
                 <div class="commitment-item animate-on-scroll" data-delay="200">
                     <div class="commitment-badge">
-                        <span class="badge-text">24/7</span>
+                        <span class="badge-text">9-6</span>
                         <span class="badge-label">UK SUPPORT</span>
                     </div>
-                    <h3>Always Available</h3>
-                    <p>Round-the-clock technical support and monitoring from our UK-based teams ensures issues are resolved quickly and efficiently.</p>
+                    <h3>Business Hours Excellence</h3>
+                    <p>Dedicated UK-based technical support during business hours (9AM-6PM Monday-Friday) with proactive monitoring to prevent issues before they impact your operations.</p>
                 </div>
                 
                 <div class="commitment-item animate-on-scroll" data-delay="300">
@@ -631,7 +631,7 @@
                 <ul>
                     <li><a href="mailto:hello@xosolutions.co.uk">Enterprise Sales</a></li>
                     <li><a href="mailto:support@xosolutions.co.uk">Technical Support</a></li>
-                    <li>24/7 Service Desk</li>
+                    <li>Business Hours Support</li>
                     <li>Emergency Response</li>
                 </ul>
             </div>

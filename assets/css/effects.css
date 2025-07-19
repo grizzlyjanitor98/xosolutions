@@ -1,0 +1,489 @@
+/* XO Solutions - Ultra Modern Effects & Animations */
+/* Super Saiyan 5000 UI Enhancement */
+
+/* Advanced Keyframe Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(1deg); }
+    50% { transform: translateY(-12px) rotate(0deg); }
+    75% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 64, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(255, 0, 64, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 64, 0); }
+}
+
+@keyframes morphBlob {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    50% { border-radius: 50% 60% 30% 40% / 30% 40% 70% 60%; }
+    75% { border-radius: 60% 30% 40% 70% / 60% 50% 40% 30%; }
+}
+
+@keyframes slideInFromSpace {
+    0% {
+        opacity: 0;
+        transform: translateY(-100vh) rotateX(90deg) scale(0.5);
+        filter: blur(20px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(30px) rotateX(45deg) scale(0.8);
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg) scale(1);
+        filter: blur(0px);
+    }
+}
+
+@keyframes glitchEffect {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes neonGlow {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px currentColor,
+            0 0 10px currentColor,
+            0 0 15px currentColor,
+            0 0 20px var(--accent),
+            0 0 35px var(--accent),
+            0 0 40px var(--accent);
+    }
+    50% {
+        text-shadow: 
+            0 0 2px currentColor,
+            0 0 5px currentColor,
+            0 0 8px currentColor,
+            0 0 12px var(--accent),
+            0 0 18px var(--accent),
+            0 0 25px var(--accent);
+    }
+}
+
+@keyframes particleFloat {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+@keyframes rotateY {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+@keyframes magneticPull {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Particle System */
+.particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: particleFloat linear infinite;
+    opacity: 0.6;
+}
+
+.particle:nth-child(odd) {
+    background: var(--primary);
+    width: 3px;
+    height: 3px;
+}
+
+.particle:nth-child(3n) {
+    background: rgba(255, 255, 255, 0.8);
+    width: 2px;
+    height: 2px;
+}
+
+/* Enhanced Morphing Blobs */
+.morph-blob {
+    position: absolute;
+    background: linear-gradient(45deg, rgba(255, 0, 64, 0.1), rgba(0, 0, 0, 0.05));
+    filter: blur(40px);
+    animation: morphBlob 20s ease-in-out infinite;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.blob-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    right: 15%;
+    animation-delay: -7s;
+}
+
+.blob-3 {
+    width: 250px;
+    height: 250px;
+    bottom: 20%;
+    left: 30%;
+    animation-delay: -14s;
+}
+
+/* Magnetic Hover Effects */
+.magnetic {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.magnetic:hover {
+    transform: scale(1.05);
+    animation: magneticPull 0.6s ease-in-out;
+}
+
+/* 3D Card Effects */
+.card-3d {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-3d:hover {
+    transform: rotateY(10deg) rotateX(5deg) translateZ(20px);
+}
+
+.card-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border-radius: inherit;
+    transform: translateZ(-1px);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.card-3d:hover::before {
+    opacity: 1;
+}
+
+/* Glitch Text Effect */
+.glitch-text {
+    position: relative;
+    color: var(--primary);
+    font-weight: 700;
+    animation: glitchEffect 0.3s ease-in-out infinite;
+}
+
+.glitch-text:before,
+.glitch-text:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text:before {
+    animation: glitchEffect 0.3s ease-in-out infinite reverse;
+    color: var(--accent);
+    z-index: -1;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.glitch-text:after {
+    animation: glitchEffect 0.3s ease-in-out infinite;
+    color: #00ff41;
+    z-index: -2;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+/* Neon Glow Effects */
+.neon-glow {
+    animation: neonGlow 2s ease-in-out infinite alternate;
+}
+
+/* Typewriter Effect */
+.typewriter-text {
+    overflow: hidden;
+    border-right: 3px solid var(--accent);
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: 
+        typewriter 3s steps(40, end),
+        blink 0.75s step-end infinite;
+}
+
+/* Floating UI Elements */
+.float-element {
+    animation: float 6s ease-in-out infinite;
+}
+
+.float-element:nth-child(even) {
+    animation-delay: -3s;
+    animation-direction: reverse;
+}
+
+/* Advanced Gradient Animations */
+.animated-gradient {
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Holographic Effects */
+.holographic {
+    background: linear-gradient(
+        45deg,
+        #ff0040,
+        #ff4081,
+        #00ff87,
+        #00e5ff,
+        #3f51b5,
+        #9c27b0,
+        #ff0040
+    );
+    background-size: 600% 600%;
+    animation: gradientShift 10s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Parallax Layers */
+.parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 120%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    will-change: transform;
+}
+
+/* Interactive Cursor Trail */
+.cursor-trail {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: all 0.1s ease;
+}
+
+/* Ripple Effect */
+.ripple-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-effect::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.ripple-effect:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Morphing Shapes */
+.morphing-shape {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, var(--accent), var(--primary));
+    border-radius: 20px;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.morphing-shape:hover {
+    border-radius: 50%;
+    transform: rotate(180deg) scale(1.2);
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+}
+
+/* Text Reveal Animation */
+.text-reveal {
+    position: relative;
+    overflow: hidden;
+}
+
+.text-reveal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent);
+    transform: translateX(-100%);
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.text-reveal.reveal::before {
+    transform: translateX(100%);
+}
+
+/* Infinite Scroll Animation */
+.infinite-scroll {
+    display: flex;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Glass Morphism Enhanced */
+.glass-ultra {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Cyberpunk Grid */
+.cyber-grid {
+    background-image: 
+        linear-gradient(rgba(255, 0, 64, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 64, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
+
+/* Quantum Loader */
+.quantum-loader {
+    width: 60px;
+    height: 60px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    position: relative;
+    animation: quantumSpin 2s linear infinite;
+}
+
+.quantum-loader::before,
+.quantum-loader::after {
+    content: '';
+    position: absolute;
+    border: 3px solid transparent;
+    border-radius: 50%;
+}
+
+.quantum-loader::before {
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-top-color: var(--accent);
+    animation: quantumSpin 3s linear infinite reverse;
+}
+
+.quantum-loader::after {
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border-top-color: var(--primary);
+    animation: quantumSpin 1s linear infinite;
+}
+
+@keyframes quantumSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Performance Optimizations */
+@media (max-width: 768px) {
+    .particle-container { display: none; }
+    .morph-blob { display: none; }
+    .parallax-layer { background-attachment: scroll; }
+    
+    .card-3d:hover {
+        transform: scale(1.02);
+    }
+    
+    .float-element {
+        animation-duration: 8s;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .particle-container,
+    .morph-blob,
+    .glitch-text,
+    .typewriter-text {
+        display: none;
+    }
+}
